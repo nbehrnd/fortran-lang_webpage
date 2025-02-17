@@ -18,7 +18,7 @@ section presents a way for handling this programmatically, using the
 object-oriented features of Fortran. We start with the outline for a
 type definition of sufficient generality:
 
-```
+```f90
 type, public :: pfunc_type
   private
   procedure(pfunc), pointer, nopass :: fp => null()
@@ -46,7 +46,7 @@ It supplies
 Notionally, one could invoke a properly set up `pfunc_type` object
 through
 
-```
+```f90
 type(pfunc_type) :: pfunc_obj
 real :: x
 
@@ -271,7 +271,7 @@ feature is recommended against.
 Returning to our earlier example type body, the next idea would be to
 simulate the dynamics of a large ensemble of bodies. A procedure
 
-```
+```f90
 subroutine propagate(bodies, delta_t, force_field)
   type(body), intent(inout) :: bodies(:)
   real, intent(in) :: delta_t
