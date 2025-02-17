@@ -41,7 +41,7 @@ $p(x) = \sum_{k=0}^{\text{degree}} a_{k} \cdot x^k \quad (x \in \Re)$
 once it has been created and subsequently supplied with values of the
 coefficients:
 
-```
+```f90
 degree = ... ! integer value known at run time only
 allocate( p%a(0:degree) )
 p%a(0:) = ...
