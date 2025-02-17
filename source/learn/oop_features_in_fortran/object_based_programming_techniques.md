@@ -115,7 +115,7 @@ attribute specified for type components.
 For the first example type from the last section, the executable
 statements in
 
-```
+```f90
 type(polynomial) :: q, r
 :
 q = polynomial( [2., 3., 1.] )
@@ -128,7 +128,7 @@ result in an object `q` auto-allocated to the value
 For the second example type from the last section, the executable
 statements in
 
-```
+```f90
 type(sorted_list) :: sl1
 type(sorted_list), target :: sl2
 type(sortable) :: d1, d2
@@ -185,7 +185,7 @@ For the `polynomial` type the interface block (placed in the
 specification section of the module containing the type definition)
 might read
 
-```
+```f90
 interface polynomial
 ! overload to assure correct lower bound when creating a polynomial object
   module procedure :: create_polynomial
@@ -511,7 +511,7 @@ ends. However, excessive memory consumption or the use of other
 resources may cause issues for reliable program execution. To work
 around these, the `block` construct can be used:
 
-```
+```f90
 program test_sorted_list
   use mod_sortable
   use mod_sorted_list
@@ -589,7 +589,7 @@ which will be discussed where appropriate.
 
 For objects of container-like type, a data transfer statement
 
-```
+```f90
 type(sorted_list) :: my_list
 : ! set up my_list
 write(*, *) my_list

@@ -19,7 +19,7 @@ repository](https://github.com/reinh-bader/object_fortran)
 As a starting point, consider the definition of a type, an object of
 which can quite generally represent a physical body:
 
-```
+```f90
 type :: body
   real :: mass
   real :: pos(3), vel(3)
@@ -135,7 +135,7 @@ following prerequisites:
 For example, the typed alllocation statement executed on a polymorphic
 allocatable object
 
-```
+```f90
 class(body), allocatable :: a_polymorphic_body
 :
 allocate( charged_body :: a_polymorphic_body )
@@ -367,7 +367,7 @@ end module
 The program invoking the `setup_wtype` procedure might do so as follows,
 to set up a `wtype` object:
 
-```
+```f90
 use mod_wtype
 type(initialize) :: c_nz, c_w
 type(wtype) :: my_wtype
@@ -447,7 +447,7 @@ Invocation of the procedure could be done in the usual manner, but the
 preferred style, especially in the case that the actual argument is
 polymorphic, is to do it through the object itself:
 
-```
+```f90
 Type(change) ::  dx
 :
 dx = change(description='mass', value=[0.0, 2.0, 0.0])
@@ -645,7 +645,7 @@ end type
 
 which means that when a statement involving a comparison expression
 
-```
+```f90
 class(sortable), allocatable :: s1, s2
 
 s1 = sortable( ... )
