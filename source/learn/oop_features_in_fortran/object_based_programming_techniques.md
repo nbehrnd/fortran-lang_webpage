@@ -96,7 +96,7 @@ is suitable as starting point for building a linked list with node
 entries of type `data`. In the simplest case, inserting a data item into
 the object is done by executing the following statements:
 
-```
+```f90
 type(sortable) :: my_data
 :
 my_data = ...
