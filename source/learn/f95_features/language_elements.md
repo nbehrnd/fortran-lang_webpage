@@ -1,5 +1,4 @@
-
-## Language elements
+# Language elements
 
 Fortran is <a href="case-insensitive" class="wikilink"
 title="case-insensitive">case-insensitive</a>. The convention of writing
@@ -11,7 +10,7 @@ transfer</a> and
 <a href="#Operations_on_external_files" class="wikilink"
 title="Operations on external files">Operations on external files</a>).
 
-### Basics
+## Basics
 
 The basic component of the Fortran language is its *character set*. Its
 members are
@@ -64,7 +63,7 @@ lines:
 
 a leading `&` on the continued line is also required.
 
-### Intrinsic data types
+## Intrinsic data types
 
 Fortran has five *intrinsic data types*: `INTEGER`, `REAL`, `COMPLEX`,
 `LOGICAL` and `CHARACTER`. Each of those types can be additionally
@@ -81,9 +80,9 @@ corresponding form of *literal constant*. The numeric types `INTEGER`
 and `REAL` can only be signed (there is no concept of sign for type
 `COMPLEX`).
 
-#### Literal constants and kinds
+### Literal constants and kinds
 
-##### INTEGER
+#### INTEGER
 
 Integer literal constants of the default kind take the form
 
@@ -137,7 +136,7 @@ constants"):
 B'01010101'   O'01234567'   Z'10fa'
 ```
 
-##### REAL
+#### REAL
 
 There are at least two real kindsthe default and one with greater
 precision (this replaces
@@ -175,7 +174,7 @@ KIND(1.7_long)   PRECISION(1.7_long)   RANGE(1.7_long)
 that give in turn the kind type value, the actual precision (here at
 least 9), and the actual range (here at least 99).
 
-##### COMPLEX
+#### COMPLEX
 
 `COMPLEX` data type is built of two integer or real components:
 
@@ -183,7 +182,7 @@ least 9), and the actual range (here at least 99).
 (1, 3.7_long)
 ```
 
-##### LOGICAL
+#### LOGICAL
 
 There are only two basic values of logical constants: `.TRUE.` and
 `.FALSE.`. Here, there may also be different kinds. Logicals don't have
@@ -200,7 +199,7 @@ and the `KIND` function operates as expected:
 KIND(.TRUE.)
 ```
 
-##### CHARACTER
+#### CHARACTER
 
 The forms of literal constants for `CHARACTER` data type are
 
@@ -219,7 +218,7 @@ the `KIND` function:
 KIND('ASCII')
 ```
 
-#### Number model and intrinsic functions
+### Number model and intrinsic functions
 
 The numeric types are based on number models with associated inquiry
 functions (whose values are independent of the values of their
@@ -238,7 +237,7 @@ important for portable numerical software:
 | `RANGE(X)`       | Decimal exponent range                   |
 | `TINY(X)`        | Smallest positive number (real)          |
 
-### Scalar variables
+## Scalar variables
 
 Scalar <a href="Variable_(programming)" class="wikilink"
 title="variables">variables</a> corresponding to the five intrinsic
@@ -306,7 +305,7 @@ Finally, there is a set of intrinsic character functions, examples being
 | `REPEAT`   | `SCAN`(for one of a set)     |
 | `TRIM`     | `VERIFY`(for all of a set)   |
 
-### Derived data types
+## Derived data types
 
 For derived data types, the form of the type must be defined first:
 
@@ -369,7 +368,7 @@ t%a%x   t%a%y   t%b%x   etc.
 (Note that the `%` qualifier was chosen rather than dot (`.`) because of
 potential ambiguity with operator notation, like `.OR.`).
 
-### Implicit and explicit typing
+## Implicit and explicit typing
 
 Unless specified otherwise, all variables starting with letters I, J, K,
 L, M and N are default `INTEGER`s, and all others are default `REAL`;
@@ -392,7 +391,7 @@ IMPLICIT NONE
 
 at the beginning of each program unit.
 
-### Arrays
+## Arrays
 
 Arrays are considered to be variables in their own right. Every array is
 characterized by its
@@ -467,7 +466,7 @@ so that
 
     is an array component of a scalar
 
-### Data initialization
+## Data initialization
 
 Variables can be given initial values as specified in a specification
 statement:
@@ -503,7 +502,7 @@ causes local variables to retain their value after a procedure call and
 then to initialize the variable to the saved value upon returning to the
 procedure.
 
-#### PARAMETER attribute
+### PARAMETER attribute
 
 A named constant can be specified directly by adding the `PARAMETER`
 attribute and the constant values to a type statement:
@@ -513,7 +512,7 @@ REAL, DIMENSION(3), PARAMETER :: field = (/ 0., 1., 2. /)
 TYPE(triplet), PARAMETER :: t = triplet( (/ 0., 0., 0. /) )
 ```
 
-#### DATA statement
+### DATA statement
 
 The `DATA` statement can be used for scalars and also for arrays and
 variables of derived type. It is also the only way to initialise just
@@ -527,7 +526,7 @@ DATA array(1:64) / 64*0/
 DATA i, j, k/ B'01010101', O'77', Z'ff'/
 ```
 
-#### Initialization expressions
+### Initialization expressions
 
 The values used in `DATA` and `PARAMETER` statements, or with these
 attributes, are constant expressions that may include references to:
@@ -542,7 +541,7 @@ INTEGER, PARAMETER :: long = SELECTED_REAL_KIND(12),   &
                       array(3) = (/ 1, 2, 3 /)
 ```
 
-### Specification expressions
+## Specification expressions
 
 It is possible to specify details of variables using any non-constant,
 scalar, integer expression that may also include inquiry function
