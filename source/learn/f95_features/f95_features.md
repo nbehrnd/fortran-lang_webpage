@@ -18,6 +18,11 @@ in the sections below can be found in the standards
 documents,[^iso_1539_2023] textbooks[^OOPvF][^OOPC][^Chapman] as well as
 the **Bibliography**.
 
+The booklet is based on Wikipedia's article
+[Fortran 95 language
+features](https://en.wikipedia.org/wiki/Fortran_95_language_features),
+last edit by February 25, 2025 16:08 UTC.
+
 [^iso_1539_1997]: [ISO/IEC 1539-1:1997](https://www.iso.org/standard/26933.html)
 
 [^iso_1539_2023]: [ISO/IEC 1539-1:2023](https://www.iso.org/standard/82170.html)
