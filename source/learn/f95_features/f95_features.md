@@ -85,7 +85,7 @@ title="statement">statements</a> are built. These can be coded using the
 new free *source form* which does not require positioning in a rigid
 column structure:
 
-``` fortran
+```f90
 FUNCTION string_concat(s1, s2)                             ! This is a comment
    TYPE (string), INTENT(IN) :: s1, s2
    TYPE (string) string_concat
@@ -100,7 +100,7 @@ be 39 continuation lines, and 132 characters per line. Blanks are
 significant. Where a token or character constant is split across two
 lines:
 
-``` fortran
+```f90
                ...        start_of&
         &_name
                ...   'a very long &
@@ -132,7 +132,7 @@ and `REAL` can only be signed (there is no concept of sign for type
 
 Integer literal constants of the default kind take the form
 
-``` fortran
+```f90
 1   0   -999   32767   +10
 ```
 
@@ -140,20 +140,20 @@ Kind can be defined as a named constant. If the desired range is
 ±10<sup>kind</sup>, the portable syntax for defining the appropriate
 kind, `two_bytes` is
 
-``` fortran
+```f90
 INTEGER, PARAMETER :: two_bytes = SELECTED_INT_KIND(4)
 ```
 
 that allows subsequent definition of constants of the form
 
-``` fortran
+```f90
 -1234_two_bytes   +1_two_bytes
 ```
 
 Here, `two_bytes` is the kind type parameter; it can also be an explicit
 default integer literal constant, like
 
-``` fortran
+```f90
 -1234_2
 ```
 
@@ -161,14 +161,14 @@ but such use is non-portable.
 
 The KIND function supplies the value of a kind type parameter:
 
-``` fortran
+```f90
 KIND(1)            KIND(1_two_bytes)
 ```
 
 and the `RANGE` function supplies the actual decimal range (so the user
 must make the actual mapping to bytes):
 
-``` fortran
+```f90
 RANGE(1_two_bytes)
 ```
 
@@ -178,7 +178,7 @@ title="DATA (initialization) statements"><code>DATA</code>
 (Z) constants may be used (often informally referred to as "BOZ
 constants"):
 
-``` fortran
+```f90
 B'01010101'   O'01234567'   Z'10fa'
 ```
 
@@ -187,13 +187,13 @@ B'01010101'   O'01234567'   Z'10fa'
 There are at least two real kindsthe default and one with greater
 precision (this replaces
 
-``` fortran
+```f90
 DOUBLE PRECISION
 ```
 
 ).
 
-``` fortran
+```f90
 SELECTED_REAL_KIND
 ```
 
@@ -201,19 +201,19 @@ functions returns the kind number for desired range and precision; for
 at least 9 decimal digits of precision and a range of 10<sup>−99</sup>
 to 10<sup>99</sup>, it can be specified as:
 
-``` fortran
+```f90
 INTEGER, PARAMETER :: long = SELECTED_REAL_KIND(9, 99)
 ```
 
 and literals subsequently specified as
 
-``` fortran
+```f90
 1.7_long
 ```
 
 Also, there are the intrinsic functions
 
-``` fortran
+```f90
 KIND(1.7_long)   PRECISION(1.7_long)   RANGE(1.7_long)
 ```
 
@@ -224,7 +224,7 @@ least 9), and the actual range (here at least 99).
 
 `COMPLEX` data type is built of two integer or real components:
 
-``` fortran
+```f90
 (1, 3.7_long)
 ```
 
@@ -235,13 +235,13 @@ There are only two basic values of logical constants: `.TRUE.` and
 their own kind inquiry functions, but use the kinds specified for
 `INTEGER`s; default kind of `LOGICAL` is the same as of INTEGER.
 
-``` fortran
+```f90
 .FALSE.   .true._one_byte
 ```
 
 and the `KIND` function operates as expected:
 
-``` fortran
+```f90
 KIND(.TRUE.)
 ```
 
@@ -249,7 +249,7 @@ KIND(.TRUE.)
 
 The forms of literal constants for `CHARACTER` data type are
 
-``` fortran
+```f90
 'A string'   "Another"   'A "quote"'   '''''''
 ```
 
@@ -260,7 +260,7 @@ example, to distinguish
 but not widely supported by compilers. Again, the kind value is given by
 the `KIND` function:
 
-``` fortran
+```f90
 KIND('ASCII')
 ```
 
@@ -289,7 +289,7 @@ Scalar <a href="Variable_(programming)" class="wikilink"
 title="variables">variables</a> corresponding to the five intrinsic
 types are specified as follows:
 
-``` fortran
+```f90
 INTEGER(KIND=2) :: i
 REAL(KIND=long) :: a
 COMPLEX         :: current
@@ -307,7 +307,7 @@ While it is not required in above examples (as there are no additional
 attributes and initialization), most Fortran-90 programmers acquire the
 habit to use it everywhere.
 
-``` fortran
+```f90
 LEN=
 ```
 
@@ -315,7 +315,7 @@ specifier is applicable only to `CHARACTER`s and specifies the string
 length (replacing the older `*len` form). The explicit `KIND=` and
 `LEN=` specifiers are optional:
 
-``` fortran
+```f90
 CHARACTER(2, Kanji) :: kanji_word
 ```
 
@@ -324,20 +324,20 @@ works just as well.
 There are some other interesting character features. Just as a substring
 as in
 
-``` fortran
+```f90
 CHARACTER(80) :: line   
 ... = line(i:i)                     ! substring
 ```
 
 was previously possible, so now is the substring
 
-``` fortran
+```f90
 '0123456789'(i:i)
 ```
 
 Also, zero-length strings are allowed:
 
-``` fortran
+```f90
 line(i:i-1)       ! zero-length string
 ```
 
@@ -355,7 +355,7 @@ Finally, there is a set of intrinsic character functions, examples being
 
 For derived data types, the form of the type must be defined first:
 
-``` fortran
+```f90
 TYPE person
    CHARACTER(10) name
    REAL          age
@@ -364,27 +364,27 @@ END TYPE person
 
 and then, variables of that type can be defined:
 
-``` fortran
+```f90
 TYPE(person) you, me
 ```
 
 To select components of a derived type, `%` qualifier is used:
 
-``` fortran
+```f90
 you%age
 ```
 
 Literal constants of derived types have the form
 *`TypeName(1stComponentLiteral, 2ndComponentLiteral, ...)`*:
 
-``` fortran
+```f90
 you = person('Smith', 23.5)
 ```
 
 which is known as a *structure constructor*. Definitions may refer to a
 previously defined type:
 
-``` fortran
+```f90
 TYPE point
    REAL x, y
 END TYPE point
@@ -395,19 +395,19 @@ END TYPE triangle
 
 and for a variable of type triangle, as in
 
-``` fortran
+```f90
 TYPE(triangle) t
 ```
 
 each component of type `point` is accessed as
 
-``` fortran
+```f90
 t%a   t%b   t%c
 ```
 
 which, in turn, have ultimate components of type real:
 
-``` fortran
+```f90
 t%a%x   t%a%y   t%b%x   etc.
 ```
 
@@ -422,7 +422,7 @@ other data types must be explicitly declared. This is known as *implicit
 typing* and is a heritage of early FORTRAN days. Those defaults can be
 overridden by *`IMPLICIT TypeName (CharacterRange)`* statements, like:
 
-``` fortran
+```f90
 IMPLICIT COMPLEX(Z)
 IMPLICIT CHARACTER(A-B)
 IMPLICIT REAL(C-H,N-Y)
@@ -431,7 +431,7 @@ IMPLICIT REAL(C-H,N-Y)
 However, it is a good practice to explicitly type all variables, and
 this can be forced by inserting the statement
 
-``` fortran
+```f90
 IMPLICIT NONE
 ```
 
@@ -450,7 +450,7 @@ arbitrary bounds can be explicitly specified. `DIMENSION` keyword is
 optional and considered an attribute; if omitted, the array shape must
 be specified after array-variable name. For example,
 
-``` fortran
+```f90
 REAL:: a(10)
 INTEGER, DIMENSION(0:100, -50:50) :: map
 ```
@@ -460,7 +460,7 @@ declares two arrays, rank-1 and rank-2, whose elements are in
 title="column-major order">column-major order</a>. Elements are, for
 example,
 
-``` fortran
+```f90
 a(1)  a(i*j)
 ```
 
@@ -468,7 +468,7 @@ and are scalars. The subscripts may be any scalar integer expression.
 
 *Sections* are parts of the array variables, and are arrays themselves:
 
-``` fortran
+```f90
 a(i:j)               ! rank one
 map(i:j, k:l:m)      ! rank two
 a(map(i, k:l))       ! vector subscript
@@ -478,7 +478,7 @@ a(3:2)               ! zero length
 Whole arrays and array sections are array-valued objects. Array-valued
 constants (constructors) are available, enclosed in `(/ ... /)`:
 
-``` fortran
+```f90
 (/ 1, 2, 3, 4 /)
 (/ ( (/ 1, 2, 3 /), i = 1, 4) /)
 (/ (i, i = 1, 9, 2) /)
@@ -491,7 +491,7 @@ of brackets: `[1, 2, 3, 4]` and `[([1,2,3], i=1,4)]` instead of the
 first two examples above, and many compilers support this now. A derived
 data type may, of course, contain array components:
 
-``` fortran
+```f90
 TYPE triplet
    REAL, DIMENSION(3) :: vertex
 END TYPE triplet
@@ -500,13 +500,13 @@ TYPE(triplet), DIMENSION(4) :: t
 
 so that
 
--   ``` fortran
+-   ```f90
     t(2)
     ```
 
     is a scalar (a structure)
 
--   ``` fortran
+-   ```f90
     t(2)%vertex
     ```
 
@@ -517,14 +517,14 @@ so that
 Variables can be given initial values as specified in a specification
 statement:
 
-``` fortran
+```f90
 REAL, DIMENSION(3) :: a = (/ 0.1, 0.2, 0.3 /)
 ```
 
 and a default initial value can be given to the component of a derived
 data type:
 
-``` fortran
+```f90
 TYPE triplet
    REAL, DIMENSION(3) :: vertex = 0.0
 END TYPE triplet
@@ -533,13 +533,13 @@ END TYPE triplet
 When local variables are initialized within a procedure they implicitly
 acquire the SAVE attribute:
 
-``` fortran
+```f90
 REAL, DIMENSION(3) :: point = (/ 0.0, 1.0, -1.0 /)
 ```
 
 This declaration is equivalent to
 
-``` fortran
+```f90
 REAL, DIMENSION(3), SAVE :: point = (/ 0.0, 1.0, -1.0 /)
 ```
 
@@ -553,7 +553,7 @@ procedure.
 A named constant can be specified directly by adding the `PARAMETER`
 attribute and the constant values to a type statement:
 
-``` fortran
+```f90
 REAL, DIMENSION(3), PARAMETER :: field = (/ 0., 1., 2. /)
 TYPE(triplet), PARAMETER :: t = triplet( (/ 0., 0., 0. /) )
 ```
@@ -565,7 +565,7 @@ variables of derived type. It is also the only way to initialise just
 parts of such objects, as well as to initialise to binary, octal or
 hexadecimal values:
 
-``` fortran
+```f90
 TYPE(triplet) :: t1, t2
 DATA t1/triplet( (/ 0., 1., 2. /) )/, t2%vertex(1)/123./
 DATA array(1:64) / 64*0/
@@ -582,7 +582,7 @@ functions `REPEAT, SELECTED_INT_KIND, TRIM, SELECTED_REAL_KIND, RESHAPE`
 and `TRANSFER` (see <a href="#Intrinsic_procedures" class="wikilink"
 title="Intrinsic procedures">Intrinsic procedures</a>):
 
-``` fortran
+```f90
 INTEGER, PARAMETER :: long = SELECTED_REAL_KIND(12),   &
                       array(3) = (/ 1, 2, 3 /)
 ```
@@ -593,7 +593,7 @@ It is possible to specify details of variables using any non-constant,
 scalar, integer expression that may also include inquiry function
 references:
 
-``` fortran
+```f90
 SUBROUTINE s(b, m, c)
    USE mod                                 ! contains a
    REAL, DIMENSION(:, :)             :: b
@@ -614,7 +614,7 @@ here in increasing order of precedence).
 Parentheses are used to indicate the order of evaluation where
 necessary:
 
-``` fortran
+```f90
 a*b + c     ! * first
 a*(b + c)   ! + first
 ```
@@ -624,7 +624,7 @@ the non-default kinds. Thus, the mixed-mode numeric expression and
 assignment rules incorporate different kind type parameters in an
 expected way:
 
-``` fortran
+```f90
 real2 = integer0 + real1
 ```
 
@@ -656,7 +656,7 @@ built-in operators:
 (the forms above are new to Fortran-90, and older equivalent forms are
 given below them). Example expressions:
 
-``` fortran
+```f90
 a < b .AND. i /= j      ! for numeric variables
 flag = a == b           ! for logical variable flags
 ```
@@ -665,20 +665,20 @@ flag = a == b           ! for logical variable flags
 
 In the case of *scalar characters* and given
 
-``` fortran
+```f90
 CHARACTER(8) result
 ```
 
 it is legal to write
 
-``` fortran
+```f90
 result(3:5) = result(1:3)    ! overlap allowed
 result(3:3) = result(3:2)    ! no assignment of null string
 ```
 
 Concatenation is performed by the operator '//'.
 
-``` fortran
+```f90
 result = 'abcde'//'123'
 filename = result//'.dat'
 ```
@@ -690,7 +690,7 @@ component basis) exist between *derived data types* mutually or with
 intrinsic types. The meaning of existing or user-specified operators can
 be (re)defined though:
 
-``` fortran
+```f90
 TYPE string80
    INTEGER       length
    CHARACTER(80) value
@@ -701,7 +701,7 @@ TYPE(string80):: str1,  str2,  str3
 
 we can write
 
-``` fortran
+```f90
 str3  = str1//str2       ! must define operation
 str3  = str1.concat.str2 ! must define operation
 char3 = char2//char3     ! intrinsic operator only
@@ -715,7 +715,7 @@ that, for an intrinsic operator token, the usual precedence rules apply,
 whereas for named operators, precedence is the highest as a unary
 operator or the lowest as a binary one. In
 
-``` fortran
+```f90
 vector3 = matrix    *    vector1  + vector2
 vector3 =(matrix .times. vector1) + vector2
 ```
@@ -726,7 +726,7 @@ added as shown. In each case there must be defined, in a
 procedures defining the operator and assignment, and corresponding
 operator-procedure association, as follows:
 
-``` fortran
+```f90
 INTERFACE OPERATOR(//) !Overloads the // operator as invoking string_concat procedure
   MODULE PROCEDURE string_concat
 END INTERFACE
@@ -740,7 +740,7 @@ together exceed the preset 80-character limit, it would be safer to use
 a subroutine to perform the concatenation (in this case
 operator-overloading would not be applicable.)
 
-``` fortran
+```f90
 MODULE string_type
    IMPLICIT NONE
    TYPE string80
@@ -799,7 +799,7 @@ are allowed also in structure constructors (see
 <a href="#Derived-data_types" class="wikilink"
 title="Derived-data types">Derived-data types</a>):
 
-``` fortran
+```f90
 str1 = string(2, char1//char2)  ! structure constructor
 ```
 
@@ -809,7 +809,7 @@ In the case of arrays then, as long as they are of the same shape
 (conformable), operations and assignments are extended in an obvious
 way, on an element-by-element basis. For example, given declarations of
 
-``` fortran
+```f90
 REAL, DIMENSION(10, 20) :: a, b, c
 REAL, DIMENSION(5)      :: v, w
 LOGICAL                    flag(10, 20)
@@ -817,7 +817,7 @@ LOGICAL                    flag(10, 20)
 
 it can be written:
 
-``` fortran
+```f90
 a = b                                       ! whole array assignment
 c = a/b                                     ! whole array division and assignment
 c = 0.                                      ! whole array assignment of scalar value
@@ -835,45 +835,45 @@ operators for arrays of derived type must be defined.
 Some real intrinsic functions that are useful for numeric computations
 are
 
--   ``` fortran
+-   ```f90
     CEILING
     ```
 
--   ``` fortran
+-   ```f90
     FLOOR
     ```
 
--   ``` fortran
+-   ```f90
     MODULO
     ```
 
     (also integer)
 
--   ``` fortran
+-   ```f90
     EXPONENT
     ```
 
--   ``` fortran
+-   ```f90
     FRACTION
     ```
 
--   ``` fortran
+-   ```f90
     NEAREST
     ```
 
--   ``` fortran
+-   ```f90
     RRSPACING
     ```
 
--   ``` fortran
+-   ```f90
     SPACING
     ```
 
--   ``` fortran
+-   ```f90
     SCALE
     ```
 
--   ``` fortran
+-   ```f90
     SET_EXPONENT
     ```
 
@@ -881,149 +881,149 @@ These are array valued for array arguments (elemental), like all
 <a href="FORTRAN_77" class="wikilink" title="FORTRAN 77">FORTRAN 77</a>
 functions (except LEN):
 
--   ``` fortran
+-   ```f90
     INT
     ```
 
--   ``` fortran
+-   ```f90
     REAL
     ```
 
--   ``` fortran
+-   ```f90
     CMPLX
     ```
 
--   ``` fortran
+-   ```f90
     AINT
     ```
 
--   ``` fortran
+-   ```f90
     ANINT
     ```
 
--   ``` fortran
+-   ```f90
     NINT
     ```
 
--   ``` fortran
+-   ```f90
     ABS
     ```
 
--   ``` fortran
+-   ```f90
     MOD
     ```
 
--   ``` fortran
+-   ```f90
     SIGN
     ```
 
--   ``` fortran
+-   ```f90
     DIM
     ```
 
--   ``` fortran
+-   ```f90
     MAX
     ```
 
--   ``` fortran
+-   ```f90
     MIN
     ```
 
 Powers, logarithms, and trigonometric functions
 
--   ``` fortran
+-   ```f90
     SQRT
     ```
 
--   ``` fortran
+-   ```f90
     EXP
     ```
 
--   ``` fortran
+-   ```f90
     LOG
     ```
 
--   ``` fortran
+-   ```f90
     LOG10
     ```
 
--   ``` fortran
+-   ```f90
     SIN
     ```
 
--   ``` fortran
+-   ```f90
     COS
     ```
 
--   ``` fortran
+-   ```f90
     TAN
     ```
 
--   ``` fortran
+-   ```f90
     ASIN
     ```
 
--   ``` fortran
+-   ```f90
     ACOS
     ```
 
--   ``` fortran
+-   ```f90
     ATAN
     ```
 
--   ``` fortran
+-   ```f90
     ATAN2
     ```
 
--   ``` fortran
+-   ```f90
     SINH
     ```
 
--   ``` fortran
+-   ```f90
     COSH
     ```
 
--   ``` fortran
+-   ```f90
     TANH
     ```
 
 Complex numbers:
 
--   ``` fortran
+-   ```f90
     AIMAG
     ```
 
--   ``` fortran
+-   ```f90
     CONJG
     ```
 
 The following are for characters:
 
--   ``` fortran
+-   ```f90
     LGE
     ```
 
--   ``` fortran
+-   ```f90
     LGT
     ```
 
--   ``` fortran
+-   ```f90
     LLE
     ```
 
--   ``` fortran
+-   ```f90
     LLT
     ```
 
--   ``` fortran
+-   ```f90
     ICHAR
     ```
 
--   ``` fortran
+-   ```f90
     CHAR
     ```
 
--   ``` fortran
+-   ```f90
     INDEX
     ```
 
@@ -1037,13 +1037,13 @@ more clarity.
 
 The simple conditional test is the `IF` statement:
 
-``` fortran
+```f90
 IF (a > b) x = y
 ```
 
 A full-blown `IF` construct is illustrated by
 
-``` fortran
+```f90
 IF (i < 0) THEN
    IF (j < 0) THEN
       x = 0.
@@ -1062,7 +1062,7 @@ END IF
 The `CASE` construct is a replacement for the computed `GOTO`, but is
 better structured and does not require the use of statement labels:
 
-``` fortran
+```f90
 SELECT CASE (number)       ! number of type integer
 CASE (:-1)                 ! all values below 0
    n_sign = -1
@@ -1077,13 +1077,13 @@ Each `CASE` selector list may contain a list and/or range of integers,
 character or logical constants, whose values may not overlap within or
 between selectors:
 
-``` fortran
+```f90
 CASE (1, 2, 7, 10:17, 23)
 ```
 
 A default is available:
 
-``` fortran
+```f90
 CASE DEFAULT
 ```
 
@@ -1093,7 +1093,7 @@ There is only one evaluation, and only one match.
 
 A simplified but sufficient form of the `DO` construct is illustrated by
 
-``` fortran
+```f90
 outer: DO
 inner:    DO i = j, k, l      ! from j to k in steps of l (l is optional)
              :
@@ -1111,7 +1111,7 @@ CYCLE statement may specify which loop is meant.
 Many, but not all, simple loops can be replaced by array expressions and
 assignments, or by new intrinsic functions. For instance
 
-``` fortran
+```f90
 tot = 0.
 DO i = m, n
    tot = tot + a(i)
@@ -1120,7 +1120,7 @@ END DO
 
 becomes simply
 
-``` fortran
+```f90
 tot = SUM( a(m:n) )
 ```
 
@@ -1141,7 +1141,7 @@ subprograms* or *modules* and can be separately compiled.
 
 An example of a main (and complete) program is
 
-``` fortran
+```f90
 PROGRAM test
    PRINT *, 'Hello world!'
 END PROGRAM test
@@ -1150,7 +1150,7 @@ END PROGRAM test
 An example of a main program and an external subprogram, forming an
 executable program, is
 
-``` fortran
+```f90
 PROGRAM test
    CALL print_message
 END PROGRAM test
@@ -1161,7 +1161,7 @@ END SUBROUTINE print_message
 
 The form of a function is
 
-``` fortran
+```f90
 FUNCTION name(arg1, arg2) ! zero or more arguments
    :                     
    name = ...
@@ -1171,7 +1171,7 @@ END FUNCTION name
 
 The form of reference of a function is
 
-``` fortran
+```f90
 x = name(a, b)
 ```
 
@@ -1181,7 +1181,7 @@ An internal subprogram is one *contained* in another (at a maximum of
 one level of nesting) and provides a replacement for the statement
 function:
 
-``` fortran
+```f90
 SUBROUTINE outer
    REAL x, y
    :
@@ -1221,7 +1221,7 @@ Modules are used to package
 An example of a module containing a type definition, interface block and
 function subprogram is
 
-``` fortran
+```f90
 MODULE interval_arithmetic
    TYPE interval
       REAL lower, upper
@@ -1243,7 +1243,7 @@ END MODULE interval_arithmetic
 
 and the simple statement
 
-``` fortran
+```f90
      
 USE interval_arithmetic
 ```
@@ -1256,14 +1256,14 @@ subprograms may, in turn, contain internal subprograms.
 The `PUBLIC` and `PRIVATE` attributes are used in specifications in
 modules to limit the scope of entities. The attribute form is
 
-``` fortran
+```f90
 REAL, PUBLIC     :: x, y, z           ! default
 INTEGER, PRIVATE :: u, v, w
 ```
 
 and the statement form is
 
-``` fortran
+```f90
 PUBLIC  :: x, y, z, OPERATOR(.add.)
 PRIVATE :: u, v, w, ASSIGNMENT(=), OPERATOR(*)
 ```
@@ -1271,7 +1271,7 @@ PRIVATE :: u, v, w, ASSIGNMENT(=), OPERATOR(*)
 The statement form has to be used to limit access to operators, and can
 also be used to change the overall default:
 
-``` fortran
+```f90
 PRIVATE                        ! sets default for module
 PUBLIC  :: only_this
 ```
@@ -1281,7 +1281,7 @@ components are all PUBLIC, the type is PUBLIC and its components PRIVATE
 (the type only is visible and one can change its details easily), or all
 of it is PRIVATE (for internal use in the module only):
 
-``` fortran
+```f90
 MODULE mine
    PRIVATE
    TYPE, PUBLIC :: list
@@ -1297,19 +1297,19 @@ The `USE` statement's purpose is to gain access to entities in a module.
 It has options to resolve name clashes if an imported name is the same
 as a local one:
 
-``` fortran
+```f90
 USE mine, local_list => list
 ```
 
 or to restrict the used entities to a specified set:
 
-``` fortran
+```f90
 USE mine, ONLY : list
 ```
 
 These may be combined:
 
-``` fortran
+```f90
 USE mine, ONLY : local_list => list
 ```
 
@@ -1317,7 +1317,7 @@ USE mine, ONLY : local_list => list
 
 We may specify the intent of dummy arguments:
 
-``` fortran
+```f90
 SUBROUTINE shuffle (ncards, cards)
   INTEGER, INTENT(IN)  :: ncards
   INTEGER, INTENT(OUT), DIMENSION(ncards) :: cards
@@ -1328,7 +1328,7 @@ Also, INOUT is possible: here the actual argument must be a variable
 
 Arguments may be optional:
 
-``` fortran
+```f90
 SUBROUTINE mincon(n, f, x, upper, lower, equalities, inequalities, convex, xstart)
    REAL, OPTIONAL, DIMENSION :: upper, lower
    :
@@ -1338,13 +1338,13 @@ SUBROUTINE mincon(n, f, x, upper, lower, equalities, inequalities, convex, xstar
 
 allows us to call `mincon` by
 
-``` fortran
+```f90
 CALL mincon (n, f, x, upper)
 ```
 
 Arguments may be keyword rather than positional (which come first):
 
-``` fortran
+```f90
 CALL mincon(n, f, x, equalities=0, xstart=x0)
 ```
 
@@ -1361,7 +1361,7 @@ an explicit interface in this case too. It is a copy of the header,
 specifications and END statement of the procedure concerned, either
 placed in a module or inserted directly:
 
-``` fortran
+```f90
 REAL FUNCTION minimum(a, b, func)
   ! returns the minimum value of the function func(x)
   ! in the interval (a,b)
@@ -1400,7 +1400,7 @@ use it as an internal procedure.**
 Interface blocks provide the mechanism by which we are able to define
 generic names for specific procedures:
 
-``` fortran
+```f90
 INTERFACE gamma                   ! generic name
    FUNCTION sgamma(X)              ! specific name
       REAL (SELECTED_REAL_KIND( 6)) sgamma, x
@@ -1415,7 +1415,7 @@ where a given set of specific names corresponding to a generic name must
 all be of functions or all of subroutines. If this interface is within a
 module, then it is simply
 
-``` fortran
+```f90
 INTERFACE gamma
    MODULE PROCEDURE sgamma, dgamma
 END INTERFACE
@@ -1432,13 +1432,13 @@ and assignment (see
 
 Indirect recursion is useful for multi-dimensional integration. For
 
-``` fortran
+```f90
 volume = integrate(fy, ybounds)
 ```
 
 We might have
 
-``` fortran
+```f90
 RECURSIVE FUNCTION integrate(f, bounds)
    ! Integrate f(x) from bounds(1) to bounds(2)
    REAL integrate
@@ -1454,7 +1454,7 @@ END FUNCTION integrate
 
 and to integrate *f(x, y)* over a rectangle:
 
-``` fortran
+```f90
 FUNCTION fy(y)
    USE func           ! module func contains function f
    REAL fy, y
@@ -1465,7 +1465,7 @@ END
 
 Direct recursion is when a procedure calls itself, as in
 
-``` fortran
+```f90
 RECURSIVE FUNCTION factorial(n) RESULT(res)
    INTEGER res, n
    IF(n.EQ.0) THEN
@@ -1498,7 +1498,7 @@ procedure (expressed simply):
 
 A compiler can check that this is the case, as in
 
-``` fortran
+```f90
 PURE FUNCTION calculate (x)
 ```
 
@@ -1526,7 +1526,7 @@ now we develop the theme.
 A zero-sized array is handled by Fortran as a legitimate object, without
 special coding by the programmer. Thus, in
 
-``` fortran
+```f90
 DO i = 1,n
    x(i) = b(i) / a(i, i)
    b(i+1:n) = b(i+1:n) - a(i+1:n, i) * x(i)
@@ -1537,7 +1537,7 @@ no special code is required for the final iteration where `i = n`. We
 note that a zero-sized array is regarded as being defined; however, an
 array of shape (0,2) is not conformable with one of shape (0,3), whereas
 
-``` fortran
+```f90
 x(1:0) = 3
 ```
 
@@ -1548,7 +1548,7 @@ is a valid 'do nothing' statement.
 These are an extension and replacement for assumed-size arrays. Given an
 actual argument like:
 
-``` fortran
+```f90
 REAL, DIMENSION(0:10, 0:20) :: a
    :
 CALL sub(a)
@@ -1560,7 +1560,7 @@ available by an explicit interface, often using an interface block (see
 <a href="#Interface_blocks" class="wikilink"
 title="Interface blocks">Interface blocks</a>). Thus we write just
 
-``` fortran
+```f90
 SUBROUTINE sub(da)
    REAL, DIMENSION(:, :) :: da
 ```
@@ -1568,7 +1568,7 @@ SUBROUTINE sub(da)
 and this is as if `da` were dimensioned (11,21). However, we can specify
 any lower bound and the array maps accordingly.
 
-``` fortran
+```f90
 REAL, DIMENSION(0:, 0:) :: da
 ```
 
@@ -1580,7 +1580,7 @@ the default upper bound is the corresponding extent.
 A partial replacement for the uses to which `EQUIVALENCE` was put is
 provided by this facility, useful for local, temporary arrays, as in
 
-``` fortran
+```f90
 SUBROUTINE swap(a, b)
    REAL, DIMENSION(:)       :: a, b
    REAL, DIMENSION(SIZE(a)) :: work
@@ -1598,7 +1598,7 @@ Fortran provides dynamic allocation of storage; it relies on a heap
 storage mechanism (and replaces another use of `EQUIVALENCE`). An
 example for establishing a work array for a whole program is
 
-``` fortran
+```f90
 MODULE work_array
    INTEGER n
    REAL, DIMENSION(:,:,:), ALLOCATABLE :: work
@@ -1616,7 +1616,7 @@ statement in each program unit. We may specify an explicit lower bound
 and allocate several entities in one statement. To free dead storage we
 write, for instance,
 
-``` fortran
+```f90
 DEALLOCATE(a, b)
 ```
 
@@ -1626,7 +1626,7 @@ Deallocation of arrays is automatic when they go out of scope.
 
 We have already met whole array assignments and operations:
 
-``` fortran
+```f90
 REAL, DIMENSION(10) :: a, b
 a = 0.          ! scalar broadcast; elemental assignment
 b = SQRT(a)     ! intrinsic function result as array object
@@ -1636,7 +1636,7 @@ In the second assignment, an intrinsic function returns an array-valued
 result for an array-valued argument. We can write array-valued functions
 ourselves (they require an explicit interface):
 
-``` fortran
+```f90
 PROGRAM test
    REAL, DIMENSION(3) :: a = (/ 1., 2., 3./),       &
                          b = (/ 2., 2., 2. /),  r
@@ -1661,7 +1661,7 @@ writing, in Fortran 90, 22 different versions, for ranks 0-0, 0-1, 1-0,
 1-1, 0-2, 2-0, 2-2, ... 7-7, and is further an aid to optimization on
 parallel processors. An elemental procedure must be pure.
 
-``` fortran
+```f90
 ELEMENTAL SUBROUTINE swap(a, b)
    REAL, INTENT(INOUT)  :: a, b
    REAL                 :: work
@@ -1682,14 +1682,14 @@ functions (`BIT_SIZE`, `KIND`, `LEN`, and the numeric inquiry ones, (see
 Often, we need to mask an assignment. This we can do using the `WHERE`,
 either as a statement:
 
-``` fortran
+```f90
 WHERE (a /= 0.0) a = 1.0/a  ! avoid division by 0
 ```
 
 (note: the test is element-by-element, not on whole array), or as a
 construct:
 
-``` fortran
+```f90
 WHERE (a /= 0.0)
    a = 1.0/a
    b = a             ! all arrays same shape
@@ -1698,7 +1698,7 @@ END WHERE
 
 or
 
-``` fortran
+```f90
 WHERE (a /= 0.0)
    a = 1.0/a
 ELSEWHERE
@@ -1727,7 +1727,7 @@ When a `DO` construct is executed, each successive iteration is
 performed in order and one after the otheran impediment to optimization
 on a parallel processor.
 
-``` fortran
+```f90
 FORALL(i = 1:n) a(i, i) = x(i)
 ```
 
@@ -1735,7 +1735,7 @@ where the individual assignments may be carried out in any order, and
 even simultaneously. The `FORALL` may be considered to be an array
 assignment expressed with the help of indices.
 
-``` fortran
+```f90
 FORALL(i=1:n, j=1:n, y(i,j)/=0.) x(j,i) = 1.0/y(i,j)
 ```
 
@@ -1744,14 +1744,14 @@ with masking condition.
 The `FORALL` construct allows several assignment statements to be
 executed in order.
 
-``` fortran
+```f90
 a(2:n-1,2:n-1) = a(2:n-1,1:n-2) + a(2:n-1,3:n) + a(1:n-2,2:n-1) + a(3:n,2:n-1)
 b(2:n-1,2:n-1) = a(2:n-1,2:n-1)
 ```
 
 is equivalent to the array assignments
 
-``` fortran
+```f90
 FORALL(i = 2:n-1, j = 2:n-1)
    a(i,j) = a(i,j-1) + a(i,j+1) + a(i-1,j) + a(i+1,j)
    b(i,j) = a(i,j)
@@ -1772,14 +1772,14 @@ referenced within a `FORALL` must be pure.
 
 For a simple case, given
 
-``` fortran
+```f90
 REAL, DIMENSION(100, 100) :: a
 ```
 
 we can reference a single element as, for instance, `a(1, 1)`. For a
 derived-data type like
 
-``` fortran
+```f90
 TYPE fun_del
    REAL                  u
    REAL, DIMENSION(3) :: du
@@ -1788,25 +1788,25 @@ END TYPE fun_del
 
 we can declare an array of that type:
 
-``` fortran
+```f90
 TYPE(fun_del), DIMENSION(10, 20) :: tar
 ```
 
 and a reference like
 
-``` fortran
+```f90
 tar(n, 2)
 ```
 
 is an element (a scalar!) of type fun_del, but
 
-``` fortran
+```f90
 tar(n, 2)%du
 ```
 
 is an array of type real, and
 
-``` fortran
+```f90
 tar(n, 2)%du(2)
 ```
 
@@ -1821,7 +1821,7 @@ The general form of subscript for an array section is
 
 (where \[ \] indicates an optional item) as in
 
-``` fortran
+```f90
 REAL a(10, 10)
 a(i, 1:n)                ! part of one row
 a(1:m, j)                ! part of one column
@@ -1836,7 +1836,7 @@ a(:, 1:7)                ! rank two section
 Note that a vector subscript with duplicate values cannot appear on the
 left-hand side of an assignment as it would be ambiguous. Thus,
 
-``` fortran
+```f90
 b( (/ 1, 7, 3, 7 /) ) = (/ 1, 2, 3, 4 /)
 ```
 
@@ -1844,14 +1844,14 @@ is illegal. Also, a section with a vector subscript must not be supplied
 as an actual argument to an `OUT` or `INOUT` dummy argument. Arrays of
 arrays are not allowed:
 
-``` fortran
+```f90
 tar%du             ! illegal
 ```
 
 We note that a given value in an array can be referenced both as an
 element and as a section:
 
-``` fortran
+```f90
 a(1, 1)            !  scalar (rank zero)
 a(1:1, 1)          !  array section (rank one)
 ```
@@ -1860,7 +1860,7 @@ depending on the circumstances or requirements. By qualifying objects of
 derived type, we obtain elements or sections depending on the rule
 stated earlier:
 
-``` fortran
+```f90
 tar%u              !  array section (structure component)
 tar(1, 1)%u        !  component of an array element
 ```
@@ -1934,7 +1934,7 @@ tar(1, 1)%u        !  component of an array element
 Pointers are variables with the `POINTER` attribute; they are not a
 distinct data type (and so no 'pointer arithmetic' is possible).
 
-``` fortran
+```f90
 REAL, POINTER :: var
 ```
 
@@ -1945,21 +1945,21 @@ otherwise associated (by pointer assignment, see
 <a href="#Pointers_in_expressions_and_assignments" class="wikilink"
 title="below">below</a>):
 
-``` fortran
+```f90
 ALLOCATE (var)
 ```
 
 and they are dereferenced automatically, so no special symbol required.
 In
 
-``` fortran
+```f90
 var = var + 2.3
 ```
 
 the value of the target of var is used and modified. Pointers cannot be
 transferred via I/O. The statement
 
-``` fortran
+```f90
 WRITE *, var
 ```
 
@@ -1969,7 +1969,7 @@ itself.
 A pointer can point to another pointer, and hence to its target, or to a
 static object that has the `TARGET` attribute:
 
-``` fortran
+```f90
 REAL, POINTER :: object
 REAL, TARGET  :: target_obj
 var => object                  ! pointer assignment
@@ -1978,7 +1978,7 @@ var => target_obj
 
 but they are strongly typed:
 
-``` fortran
+```f90
 INTEGER, POINTER :: int_var
 var => int_var                 ! illegal - types must match
 ```
@@ -1987,7 +1987,7 @@ and, similarly, for arrays the ranks as well as the type must agree.
 
 A pointer can be a component of a derived type:
 
-``` fortran
+```f90
 TYPE entry                       ! type for sparse matrix
    REAL :: value
    INTEGER :: index
@@ -1997,14 +1997,14 @@ END TYPE entry
 
 and we can define the beginning of a linked chain of such entries:
 
-``` fortran
+```f90
 TYPE(entry), POINTER :: chain
 ```
 
 After suitable allocations and definitions, the first two entries could
 be addressed as
 
-``` fortran
+```f90
 chain%value           chain%next%value
 chain%index           chain%next%index
 chain%next            chain%next%next
@@ -2022,21 +2022,21 @@ without nullifying any other pointer referring to it.
 The intrinsic function `ASSOCIATED` can test the association status of a
 defined pointer:
 
-``` fortran
+```f90
 IF (ASSOCIATED(ptr)) THEN
 ```
 
 or between a defined pointer and a defined target (which may, itself, be
 a pointer):
 
-``` fortran
+```f90
 IF (ASSOCIATED(ptr, target)) THEN
 ```
 
 An alternative way to initialize a pointer, also in a specification
 statement, is to use the `NULL` function:
 
-``` fortran
+```f90
 REAL, POINTER, DIMENSION(:) :: vector => NULL() ! compile time
 vector => NULL()                                ! run time
 ```
@@ -2049,7 +2049,7 @@ matrix manipulation *y = B C z*, we can write the following code
 (although, in this case, the same result could be achieved more simply
 by other means):
 
-``` fortran
+```f90
 REAL, TARGET  :: b(10,10), c(10,10), r(10), s(10), z(10)
 REAL, POINTER :: a(:,:), x(:), y(:)
 INTEGER mult
@@ -2071,7 +2071,7 @@ END DO
 For objects of derived type we have to distinguish between pointer and
 normal assignment. In
 
-``` fortran
+```f90
 TYPE(entry), POINTER :: first, current
 :
 first => current
@@ -2079,13 +2079,13 @@ first => current
 
 the assignment causes first to point at current, whereas
 
-``` fortran
+```f90
 first =  current
 ```
 
 causes current to overwrite first and is equivalent to
 
-``` fortran
+```f90
 first%value = current%value
 first%index = current%index
 first%next => current%next
@@ -2106,7 +2106,7 @@ pointer,
 If the dummy argument is not a pointer, it becomes associated with the
 target of the actual argument:
 
-``` fortran
+```f90
    REAL, POINTER :: a (:,:)
       :
    ALLOCATE (a(80, 80))
@@ -2123,7 +2123,7 @@ Function results may also have the `POINTER` attribute; this is useful
 if the result size depends on calculations performed in the function, as
 in
 
-``` fortran
+```f90
 USE data_handler
 REAL x(100)
 REAL, POINTER :: y(:)
@@ -2133,7 +2133,7 @@ y => compact(x)
 
 where the module data_handler contains
 
-``` fortran
+```f90
 FUNCTION compact(x)
    REAL, POINTER :: compact(:)
    REAL x(:)
@@ -2152,13 +2152,13 @@ defined target).
 
 These do not exist as such: given
 
-``` fortran
+```f90
 TYPE(entry) :: rows(n)
 ```
 
 then
 
-``` fortran
+```f90
 rows%next              ! illegal
 ```
 
@@ -2166,7 +2166,7 @@ would be such an object, but with an irregular storage pattern. For this
 reason they are not allowed. However, we can achieve the same effect by
 defining a derived data type with a pointer as its sole component:
 
-``` fortran
+```f90
 TYPE row
    REAL, POINTER :: r(:)
 END TYPE
@@ -2174,13 +2174,13 @@ END TYPE
 
 and then defining arrays of this data type
 
-``` fortran
+```f90
 TYPE(row) :: s(n), t(n)
 ```
 
 where the storage for the rows can be allocated by, for instance,
 
-``` fortran
+```f90
 DO i = 1, n
    ALLOCATE (t(i)%r(1:i)) ! Allocate row i of length i
 END DO
@@ -2188,13 +2188,13 @@ END DO
 
 The array assignment
 
-``` fortran
+```f90
 s = t
 ```
 
 is then equivalent to the pointer assignments
 
-``` fortran
+```f90
 s(i)%r => t(i)%r
 ```
 
@@ -2204,19 +2204,19 @@ for all components.
 
 Given an array
 
-``` fortran
+```f90
 REAL, TARGET :: table(100,100)
 ```
 
 that is frequently referenced with the fixed subscripts
 
-``` fortran
+```f90
 table(m:n, p:q)
 ```
 
 these references may be replaced by
 
-``` fortran
+```f90
 REAL, DIMENSION(:, :), POINTER :: window
    :
 window => table(m:n, p:q)
@@ -2224,13 +2224,13 @@ window => table(m:n, p:q)
 
 The subscripts of window are
 
-``` fortran
+```f90
 1:n-m+1, 1:q-p+1
 ```
 
 . Similarly, for
 
-``` fortran
+```f90
 tar%u
 ```
 
@@ -2238,13 +2238,13 @@ tar%u
 <a href="#Array_elements" class="wikilink" title="already">already</a>),
 we can use, say,
 
-``` fortran
+```f90
 taru => tar%u
 ```
 
 to point at all the u components of tar, and subscript it as
 
-``` fortran
+```f90
 taru(1, 2)
 ```
 
@@ -2253,7 +2253,7 @@ The subscripts are as those of tar itself. (This replaces yet more of
 
 In the pointer association
 
-``` fortran
+```f90
 pointer => array_expression
 ```
 
@@ -2266,7 +2266,7 @@ lower bounds default to 1.
 2003</a> allows specifying arbitrary lower bounds on pointer
 association, like
 
-``` fortran
+```f90
 window(r:,s:) => table(m:n,p:q)
 ```
 
@@ -2276,7 +2276,7 @@ does not have this feature; however, it can be simulated using the
 following trick (based on the pointer association rules for assumed
 shape array dummy arguments):
 
-``` fortran
+```f90
 FUNCTION remap_bounds2(lb1,lb2,array) RESULT(ptr)
    INTEGER, INTENT(IN)                            :: lb1,lb2
    REAL, DIMENSION(lb1:,lb2:), INTENT(IN), TARGET :: array
@@ -2299,7 +2299,7 @@ deal only with their general classification and with those that have so
 far been omitted. All intrinsic procedures can be used with keyword
 arguments:
 
-``` fortran
+```f90
 CALL DATE_AND_TIME (TIME=t)
 ```
 
@@ -2339,7 +2339,7 @@ Bit manipulation
 
 Transfer function, as in
 
-``` fortran
+```f90
 INTEGER :: i = TRANSFER('abcd', 0)
 ```
 
@@ -2365,7 +2365,7 @@ These examples illustrate various forms of I/O lists with some simple
 formats (see
 <a href="#Edit_descriptors" class="wikilink" title="below">below</a>):
 
-``` fortran
+```f90
 INTEGER             :: i
 REAL, DIMENSION(10) :: a
 CHARACTER(len=20)   :: word
@@ -2379,7 +2379,7 @@ PRINT "(3f10.3)",  a(1)*a(2)+i, SQRT(a(3:4))
 Variables, but not expressions, are equally valid in input statements
 using the `READ` statement:
 
-``` fortran
+```f90
 READ "(i10)", i
 ```
 
@@ -2392,13 +2392,13 @@ transfer takes place between the file and the targets.
 An item of derived type is treated as if the components were specified
 in the same order as in the type declaration, so
 
-``` fortran
+```f90
 read "(8f10.5)", p, t  ! types point and triangle
 ```
 
 has the same effect as the statement
 
-``` fortran
+```f90
 READ "(8f10.5)", p%x, p%y, t%a%x, t%a%y, t%b%x, &
                            t%b%y, t%c%x, t%c%y
 ```
@@ -2412,7 +2412,7 @@ an item corresponds to no actual data transfer.
 The format specification may also be given in the form of a character
 expression:
 
-``` fortran
+```f90
 CHARACTER(len=*), parameter :: form = "(f10.3)"
 :
 PRINT form, q
@@ -2423,7 +2423,7 @@ or as an asterisk this is a type of I/O known as *list-directed* I/O
 <a href="#List-directed_I/O" class="wikilink" title="below">below</a>),
 in which the format is defined by the computer system:
 
-``` fortran
+```f90
 PRINT *, "Square-root of q = ", SQRT(q)
 ```
 
@@ -2433,7 +2433,7 @@ number*. However, two I/O statements, `PRINT` and a variant of `READ`,
 do not reference any unit number: this is referred to as terminal I/O.
 Otherwise the form is:
 
-``` fortran
+```f90
 READ (UNIT=4,     FMT="(f10.3)") q
 READ (UNIT=nunit, FMT="(f10.3)") q
 READ (UNIT=4*i+j, FMT="(f10.3)") a
@@ -2445,7 +2445,7 @@ error, keyboard and terminal, respectively).
 
 An asterisk is a variantagain from the keyboard:
 
-``` fortran
+```f90
 READ (UNIT=*, FMT="(f10.3)") q
 ```
 
@@ -2453,7 +2453,7 @@ A read with a unit specifier allows
 <a href="exception_handling" class="wikilink"
 title="exception handling">exception handling</a>:
 
-``` fortran
+```f90
 READ (UNIT=NUNIT, FMT="(3f10.3)", IOSTAT=ios) a,b,c
 IF (ios == 0) THEN
 !     Successful read - continue execution.
@@ -2467,7 +2467,7 @@ END IF
 There a second type of formatted output statement, the `WRITE`
 statement:
 
-``` fortran
+```f90
 WRITE (UNIT=nout, FMT="(10f10.3)", IOSTAT=ios) a
 ```
 
@@ -2477,7 +2477,7 @@ These allow format conversion between various representations to be
 carried out by the program in a storage area defined within the program
 itself.
 
-``` fortran
+```f90
 INTEGER, DIMENSION(30)         :: ival
 INTEGER                        :: key
 CHARACTER(LEN=30)              :: buffer
@@ -2495,7 +2495,7 @@ element.
 
 An example using a `WRITE` statement is
 
-``` fortran
+```f90
 INTEGER           :: day
 REAL              :: cash
 CHARACTER(LEN=50) :: line
@@ -2512,7 +2512,7 @@ that might write
 
 An example of a read without a specified format for input is
 
-``` fortran
+```f90
 INTEGER               :: i
 REAL                  :: a
 COMPLEX, DIMENSION(2) :: field
@@ -2525,7 +2525,7 @@ READ *, i, a, field, flag, title, word
 
 If this reads the input record
 
-``` fortran
+```f90
 10 6.4 (1.0,0.0) (2.0,0.0) t test/
 ```
 
@@ -2545,7 +2545,7 @@ always repositions the file after the last record accessed, a
 non-advancing I/O statement performs no such repositioning and may
 therefore leave the file positioned within a record.
 
-``` fortran
+```f90
 CHARACTER(LEN=3)  :: key
 INTEGER           :: u, s, ios
 :
@@ -2566,7 +2566,7 @@ In order to write a prompt to a terminal screen and to read from the
 next character position on the screen without an intervening line-feed,
 we can write
 
-``` fortran
+```f90
 WRITE (UNIT=*, FMT="(a)", ADVANCE="no") "enter next prime number:"
 READ  (UNIT=*, FMT="(i10)") prime_number
 ```
@@ -2585,13 +2585,13 @@ title="below">below</a>) may have a repeat count, and a repeat count can
 also apply to a group of edit descriptors, enclosed in parentheses, with
 nesting:
 
-``` fortran
+```f90
 PRINT "(2(2i5,2f8.2))", i(1),i(2),a(1),a(2), i(3),i(4),a(3),a(4)
 ```
 
 Entire format specifications can be repeated:
 
-``` fortran
+```f90
 PRINT "(10i8)", (/ (i(j), j=1,200) /)
 ```
 
@@ -2612,7 +2612,7 @@ generated by a program on one computer, to be read back on the same
 computer or another computer using the same internal number
 representations:
 
-``` fortran
+```f90
 OPEN(UNIT=4, FILE='test', FORM='unformatted')
 READ(UNIT=4) q
 WRITE(UNIT=nout, IOSTAT=ios) a  ! no fmt=
@@ -2625,7 +2625,7 @@ all the records have the same length, and each record is identified by
 an index number. It is possible to write, read, or re-write any
 specified record without regard to position.
 
-``` fortran
+```f90
 INTEGER, PARAMETER :: nunit=2, length=100
 REAL, DIMENSION(length)            :: a
 REAL, DIMENSION(length+1:2*length) :: b
@@ -2665,14 +2665,14 @@ The statement is used to connect an external file to a unit, create a
 file that is preconnected, or create a file and connect it to a unit.
 The syntax is
 
-``` fortran
+```f90
 OPEN (UNIT=u, STATUS=st, ACTION=act [,olist])
 ```
 
 where `olist` is a list of optional specifiers. The specifiers may
 appear in any order.
 
-``` fortran
+```f90
 OPEN (UNIT=2, IOSTAT=ios, FILE="cities", STATUS="new", ACCESS="direct",  &
       ACTION="readwrite", RECL=100)
 ```
@@ -2683,13 +2683,13 @@ Other specifiers are `FORM` and `POSITION`.
 
 This is used to disconnect a file from a unit.
 
-``` fortran
+```f90
 CLOSE (UNIT=u [, IOSTAT=ios] [, STATUS=st])
 ```
 
 as in
 
-``` fortran
+```f90
 CLOSE (UNIT=2, IOSTAT=ios, STATUS="delete")
 ```
 
@@ -2707,25 +2707,25 @@ when used to write an unformatted record.
 
 For inquire by unit
 
-``` fortran
+```f90
 INQUIRE (UNIT=u, ilist)
 ```
 
 or for inquire by file
 
-``` fortran
+```f90
 INQUIRE (FILE=fln, ilist)
 ```
 
 or for inquire by I/O list
 
-``` fortran
+```f90
 INQUIRE (IOLENGTH=length) olist
 ```
 
 As an example
 
-``` fortran
+```f90
 LOGICAL            :: ex, op
 CHARACTER (LEN=11) :: nam, acc, seq, frm
 INTEGER            :: irec, nr
@@ -2735,7 +2735,7 @@ INQUIRE (UNIT=2, EXIST=ex, OPENED=op, NAME=nam, ACCESS=acc, SEQUENTIAL=seq, &
 
 yields
 
-``` fortran
+```f90
 ex      .true.
 op      .true.
 nam      cities
