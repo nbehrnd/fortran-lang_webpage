@@ -15,12 +15,12 @@ title="Operations on external files">Operations on external files</a>).
 The basic component of the Fortran language is its *character set*. Its
 members are
 
--   the letters A ... Z and a ... z (which are equivalent outside a
-    character context)
--   the numerals 0 ... 9
--   the underscore \_
--   the special characters
-    `= : + blank - * / ( ) [ ] , . $ ' ! " % & ; < > ?`
+- the letters A ... Z and a ... z (which are equivalent outside a
+  character context)
+- the numerals 0 ... 9
+- the underscore \_
+- the special characters
+  `= : + blank - * / ( ) [ ] , . $ ' ! " % & ; < > ?`
 
 <a href="Token_(parser)" class="wikilink" title="Token">Tokens</a> that
 have a syntactic meaning to the compiler are built from those
@@ -279,7 +279,7 @@ There are some other interesting character features. Just as a substring
 as in
 
 ```f90
-CHARACTER(80) :: line   
+CHARACTER(80) :: line
 ... = line(i:i)                     ! substring
 ```
 
@@ -454,17 +454,17 @@ TYPE(triplet), DIMENSION(4) :: t
 
 so that
 
--   ```f90
-    t(2)
-    ```
+```f90
+t(2)
+```
 
-    is a scalar (a structure)
+is a scalar (a structure)
 
--   ```f90
-    t(2)%vertex
-    ```
+```f90
+t(2)%vertex
+```
 
-    is an array component of a scalar
+is an array component of a scalar
 
 ## Data initialization
 
@@ -557,4 +557,3 @@ SUBROUTINE s(b, m, c)
    CHARACTER(LEN= m + LEN(c))        :: cc
    REAL (SELECTED_REAL_KIND(2*PRECISION(a))) :: z
 ```
-
