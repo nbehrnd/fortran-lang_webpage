@@ -1,14 +1,14 @@
 # Language elements
 
-Fortran is <a href="case-insensitive" class="wikilink"
-title="case-insensitive">case-insensitive</a>. The convention of writing
+Fortran is
+[case-insensitive](https://en.wikipedia.org/wiki/Case_sensitivity)
+The convention of writing
 Fortran keywords in upper case and all other names in lower case is
 adopted in this article; except, by way of contrast, in the input/output
 descriptions
-(<a href="#Data_transfer" class="wikilink" title="Data transfer">Data
-transfer</a> and
-<a href="#Operations_on_external_files" class="wikilink"
-title="Operations on external files">Operations on external files</a>).
+([Data transfer](data_transfer)
+and
+[Operations on external files](operations_on_external_files)).
 
 ## Basics
 
@@ -22,7 +22,8 @@ members are
 - the special characters
   `= : + blank - * / ( ) [ ] , . $ ' ! " % & ; < > ?`
 
-<a href="Token_(parser)" class="wikilink" title="Token">Tokens</a> that
+[Tokens](https://en.wikipedia.org/wiki/Token_(parser))
+that
 have a syntactic meaning to the compiler are built from those
 components. There are six classes of tokens:
 
@@ -34,8 +35,9 @@ components. There are six classes of tokens:
 | Name      | `solve_equation` (up to 31 characters, including \_) |
 | Separator | `/ ( ) (/ /) [ ] , = => : :: ; %`                    |
 
-From the tokens, <a href="statement_(programming)" class="wikilink"
-title="statement">statements</a> are built. These can be coded using the
+From the tokens,
+[statements](https://en.wikipedia.org/wiki/Statement_(programming))
+are built. These can be coded using the
 new free *source form* which does not require positioning in a rigid
 column structure:
 
@@ -126,9 +128,9 @@ must make the actual mapping to bytes):
 RANGE(1_two_bytes)
 ```
 
-Also, in <a href="#DATA_statement" class="wikilink"
-title="DATA (initialization) statements"><code>DATA</code>
-(initialization) statements</a>, binary (B), octal (O) and hexadecimal
+Also, in
+[`DATA` (initialization) statements](data_statement),
+binary (B), octal (O) and hexadecimal
 (Z) constants may be used (often informally referred to as "BOZ
 constants"):
 
@@ -209,8 +211,10 @@ The forms of literal constants for `CHARACTER` data type are
 
 (the last being an empty string). Different kinds are allowed (for
 example, to distinguish
-<a href="ASCII" class="wikilink" title="ASCII">ASCII</a> and
-<a href="UNICODE" class="wikilink" title="UNICODE">UNICODE</a> strings),
+[ASCII](https://en.wikipedia.org/wiki/ASCII)
+and
+[UNICODE](https://en.wikipedia.org/wiki/UNICODE)
+strings),
 but not widely supported by compilers. Again, the kind value is given by
 the `KIND` function:
 
@@ -239,8 +243,9 @@ important for portable numerical software:
 
 ## Scalar variables
 
-Scalar <a href="Variable_(programming)" class="wikilink"
-title="variables">variables</a> corresponding to the five intrinsic
+Scalar
+[variables](https://en.wikipedia.org/wiki/Variable_(programming))
+corresponding to the five intrinsic
 types are specified as follows:
 
 ```f90
@@ -395,10 +400,9 @@ at the beginning of each program unit.
 
 Arrays are considered to be variables in their own right. Every array is
 characterized by its
-<a href="type_(computer_programming)" class="wikilink"
-title="type">type</a>,
-<a href="rank_(computer_programming)" class="wikilink"
-title="rank">rank</a>, and *shape* (which defines the extents of each
+[type](https://en.wikipedia.org/wiki/Type_(computer_programming)),
+[rank](https://en.wikipedia.org/wiki/Rank_(computer_programming)),
+and *shape* (which defines the extents of each
 dimension). Bounds of each dimension are by default 1 and *size*, but
 arbitrary bounds can be explicitly specified. `DIMENSION` keyword is
 optional and considered an attribute; if omitted, the array shape must
@@ -410,9 +414,8 @@ INTEGER, DIMENSION(0:100, -50:50) :: map
 ```
 
 declares two arrays, rank-1 and rank-2, whose elements are in
-<a href="column-major_order" class="wikilink"
-title="column-major order">column-major order</a>. Elements are, for
-example,
+[column-major order](https://en.wikipedia.org/wiki/Column-major_order).
+Elements are, for example,
 
 ```f90
 a(1)  a(i*j)
@@ -533,8 +536,8 @@ attributes, are constant expressions that may include references to:
 array and structure constructors, elemental intrinsic functions with
 integer or character arguments and results, and the six transformational
 functions `REPEAT, SELECTED_INT_KIND, TRIM, SELECTED_REAL_KIND, RESHAPE`
-and `TRANSFER` (see <a href="#Intrinsic_procedures" class="wikilink"
-title="Intrinsic procedures">Intrinsic procedures</a>):
+and `TRANSFER` (see
+[Intrinsic procedures](intrinsic_procedures):
 
 ```f90
 INTEGER, PARAMETER :: long = SELECTED_REAL_KIND(12),   &
