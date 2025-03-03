@@ -286,6 +286,14 @@ books:
       - /learn/oop_features_in_fortran/object_oriented_programming_techniques
       - /learn/oop_features_in_fortran/performance_and_ease_of_use
 
+  - title: Fortran 95 language features
+    description: Wikipedia's article about the Fortran 95 standard
+    category: Fortran Documentation
+    link: /learn/f95_features
+    pages:
+      - /learn/f95_features/
+      - /learn/f95_features/language_elments
+
 # Web links listed at the bottom of the 'Learn' landing page
 #
 reference-links:
