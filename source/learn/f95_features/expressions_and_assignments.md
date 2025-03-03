@@ -1,6 +1,6 @@
-## Expressions and assignments
+# Expressions and assignments
 
-### Scalar numeric
+## Scalar numeric
 
 The usual arithmetic operators are available `+, -, *, /, **` (given
 here in increasing order of precedence).
@@ -39,7 +39,7 @@ real numbers to integers:
 -   `FLOOR`: largest integral value not greater than argument (round
     down) (Fortran-90)
 
-### Scalar relational operations
+## Scalar relational operations
 
 For *scalar relational* operations of numeric types, there is a set of
 built-in operators:
@@ -77,7 +77,7 @@ result = 'abcde'//'123'
 filename = result//'.dat'
 ```
 
-### Derived-data types
+## Derived-data types
 
 No built-in operations (except assignment, defined on component-by
 component basis) exist between *derived data types* mutually or with
@@ -197,7 +197,7 @@ title="Derived-data types">Derived-data types</a>):
 str1 = string(2, char1//char2)  ! structure constructor
 ```
 
-### Arrays
+## Arrays
 
 In the case of arrays then, as long as they are of the same shape
 (conformable), operations and assignments are extended in an obvious
