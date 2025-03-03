@@ -30,14 +30,14 @@ These functions are available for controlled
 <a href="rounding" class="wikilink" title="rounding">rounding</a> of
 real numbers to integers:
 
--   `NINT`: round to nearest integer, return integer result
--   `ANINT`: round to nearest integer, return real result
--   `INT`: truncate (round towards zero), return integer result
--   `AINT`: truncate (round towards zero), return real result
--   `CEILING`: smallest integral value not less than argument (round up)
-    (Fortran-90)
--   `FLOOR`: largest integral value not greater than argument (round
-    down) (Fortran-90)
+- `NINT`: round to nearest integer, return integer result
+- `ANINT`: round to nearest integer, return real result
+- `INT`: truncate (round towards zero), return integer result
+- `AINT`: truncate (round towards zero), return real result
+- `CEILING`: smallest integral value not less than argument (round up)
+  (Fortran-90)
+- `FLOOR`: largest integral value not greater than argument (round
+  down) (Fortran-90)
 
 ## Scalar relational operations
 
@@ -229,194 +229,63 @@ operators for arrays of derived type must be defined.
 Some real intrinsic functions that are useful for numeric computations
 are
 
--   ```f90
-    CEILING
-    ```
-
--   ```f90
-    FLOOR
-    ```
-
--   ```f90
-    MODULO
-    ```
-
-    (also integer)
-
--   ```f90
-    EXPONENT
-    ```
-
--   ```f90
-    FRACTION
-    ```
-
--   ```f90
-    NEAREST
-    ```
-
--   ```f90
-    RRSPACING
-    ```
-
--   ```f90
-    SPACING
-    ```
-
--   ```f90
-    SCALE
-    ```
-
--   ```f90
-    SET_EXPONENT
-    ```
+- `CEILING`
+- `FLOOR`
+- `MODULO`
+  (also integer)
+- `EXPONENT`
+- `FRACTION`
+- `NEAREST`
+- `RRSPACING`
+- `SPACING`
+- `SCALE`
+- `SET_EXPONENT`
 
 These are array valued for array arguments (elemental), like all
 <a href="FORTRAN_77" class="wikilink" title="FORTRAN 77">FORTRAN 77</a>
 functions (except LEN):
 
--   ```f90
-    INT
-    ```
-
--   ```f90
-    REAL
-    ```
-
--   ```f90
-    CMPLX
-    ```
-
--   ```f90
-    AINT
-    ```
-
--   ```f90
-    ANINT
-    ```
-
--   ```f90
-    NINT
-    ```
-
--   ```f90
-    ABS
-    ```
-
--   ```f90
-    MOD
-    ```
-
--   ```f90
-    SIGN
-    ```
-
--   ```f90
-    DIM
-    ```
-
--   ```f90
-    MAX
-    ```
-
--   ```f90
-    MIN
-    ```
+- `INT`
+- `REAL`
+- `CMPLX`
+- `AINT`
+- `ANINT`
+- `NINT`
+- `ABS`
+- `MOD`
+- `SIGN`
+- `DIM`
+- `MAX`
+- `MIN`
 
 Powers, logarithms, and trigonometric functions
 
--   ```f90
-    SQRT
-    ```
-
--   ```f90
-    EXP
-    ```
-
--   ```f90
-    LOG
-    ```
-
--   ```f90
-    LOG10
-    ```
-
--   ```f90
-    SIN
-    ```
-
--   ```f90
-    COS
-    ```
-
--   ```f90
-    TAN
-    ```
-
--   ```f90
-    ASIN
-    ```
-
--   ```f90
-    ACOS
-    ```
-
--   ```f90
-    ATAN
-    ```
-
--   ```f90
-    ATAN2
-    ```
-
--   ```f90
-    SINH
-    ```
-
--   ```f90
-    COSH
-    ```
-
--   ```f90
-    TANH
-    ```
+- `SQRT`
+- `EXP`
+- `LOG`
+- `LOG10`
+- `SIN`
+- `COS`
+- `TAN`
+- `ASIN`
+- `ACOS`
+- `ATAN`
+- `ATAN2`
+- `SINH`
+- `COSH`
+- `TANH`
 
 Complex numbers:
 
--   ```f90
-    AIMAG
-    ```
-
--   ```f90
-    CONJG
-    ```
+- `AIMAG`
+- `CONJG`
 
 The following are for characters:
 
--   ```f90
-    LGE
-    ```
-
--   ```f90
-    LGT
-    ```
-
--   ```f90
-    LLE
-    ```
-
--   ```f90
-    LLT
-    ```
-
--   ```f90
-    ICHAR
-    ```
-
--   ```f90
-    CHAR
-    ```
-
--   ```f90
-    INDEX
-    ```
+- `LGE`
+- `LGT`
+- `LLE`
+- `LLT`
+- `ICHAR`
+- `CHAR`
+- `INDEX`
