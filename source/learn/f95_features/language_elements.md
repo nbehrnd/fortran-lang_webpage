@@ -208,9 +208,8 @@ functions (whose values are independent of the values of their
 arguments; arguments are used only to provide kind). These functions are
 important for portable numerical software:
 
-|                  |                                          |
-|------------------|------------------------------------------|
 | `digits(x)`      | Number of significant digits             |
+|------------------|------------------------------------------|
 | `epsilon(x)`     | Almost negligible compared to one (real) |
 | `huge(x)`        | Largest number                           |
 | `maxexponent(x)` | Maximum model exponent (real)            |
@@ -277,9 +276,8 @@ line(i:i-1)       ! zero-length string
 
 Finally, there is a set of intrinsic character functions, examples being
 
-|            |                              |
-|------------|------------------------------|
 | `achar`    | `iachar` (for ASCII set)     |
+|------------|------------------------------|
 | `adjustl`  | `adjustr`                    |
 | `len_trim` | `index(s1, s2, back=.true.)` |
 | `repeat`   | `scan`(for one of a set)     |
