@@ -5,6 +5,7 @@
 :hidden:
 Language elements <language_elements>
 Expressions and assignments <expressions_and_assignments>
+Control statements <control_statements>
 :::
 
 This is an overview of **Fortran 95 language features** which is based
