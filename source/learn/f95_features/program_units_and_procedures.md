@@ -1,6 +1,6 @@
-## Program units and procedures
+# Program units and procedures
 
-### Definitions
+## Definitions
 
 In order to discuss this topic we need some definitions. In logical
 terms, an executable program consists of one *main program* and zero or
@@ -49,7 +49,7 @@ The form of reference of a function is
 x = name(a, b)
 ```
 
-### Internal procedures
+## Internal procedures
 
 An internal subprogram is one *contained* in another (at a maximum of
 one level of nesting) and provides a replacement for the statement
@@ -79,7 +79,7 @@ The names of program units and external procedures are *global*, and the
 names of implied-DO variables have a scope of the statement that
 contains them.
 
-### Modules
+## Modules
 
 Modules are used to package
 
@@ -125,7 +125,7 @@ USE interval_arithmetic
 provides *use association* to all the module's entities. Module
 subprograms may, in turn, contain internal subprograms.
 
-### Controlling accessibility
+## Controlling accessibility
 
 The `PUBLIC` and `PRIVATE` attributes are used in specifications in
 modules to limit the scope of entities. The attribute form is
@@ -187,7 +187,7 @@ These may be combined:
 USE mine, ONLY : local_list => list
 ```
 
-### Arguments
+## Arguments
 
 We may specify the intent of dummy arguments:
 
@@ -225,7 +225,7 @@ CALL mincon(n, f, x, equalities=0, xstart=x0)
 Optional and keyword arguments are handled by explicit interfaces, that
 is with internal or module procedures or with interface blocks.
 
-### Interface blocks
+## Interface blocks
 
 Any reference to an internal or module subprogram is through an
 interface that is 'explicit' (that is, the compiler can see all the
@@ -269,7 +269,7 @@ arguments.
 explicit is either to place the procedure concerned in a module or to
 use it as an internal procedure.**
 
-### Overloading and generic interfaces
+## Overloading and generic interfaces
 
 Interface blocks provide the mechanism by which we are able to define
 generic names for specific procedures:
@@ -302,7 +302,7 @@ We have already seen the use of interface blocks for defined operators
 and assignment (see
 <a href="#Modules" class="wikilink" title="Modules">Modules</a>).
 
-### Recursion
+## Recursion
 
 Indirect recursion is useful for multi-dimensional integration. For
 
@@ -352,7 +352,7 @@ END
 
 Here, we note the `RESULT` clause and termination test.
 
-### Pure procedures
+## Pure procedures
 
 This is a feature for parallel computing.
 
