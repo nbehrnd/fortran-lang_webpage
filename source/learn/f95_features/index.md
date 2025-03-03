@@ -4,6 +4,7 @@
 :maxdepth: 2
 :hidden:
 Language elements <language_elements>
+Expressions and assignments <expressions_and_assignments>
 :::
 
 This is an overview of **Fortran 95 language features** which is based
