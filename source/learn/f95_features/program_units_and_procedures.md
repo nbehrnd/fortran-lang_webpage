@@ -5,7 +5,7 @@
 In order to discuss this topic we need some definitions. In logical
 terms, an executable program consists of one *main program* and zero or
 more *subprograms* (or *procedures*) - these do something. Subprograms
-are either *functions*or *subroutines*, which are either *external,
+are either *functions* or *subroutines*, which are either *external,
 internal* or *module* subroutines. (External subroutines are what we
 knew from FORTRAN 77.)
 
@@ -88,8 +88,7 @@ Modules are used to package
 - subprograms (which among other things replaces the use of ENTRY from
   Fortran 77);
 - interface blocks (another scoping unit, see
-  <a href="#Interface_blocks" class="wikilink"
-  title="Interface blocks">Interface blocks</a>);
+  [Interface blocks](interface_blocks);
 - namelist groups (see any textbook).
 
 An example of a module containing a type definition, interface block and
@@ -256,11 +255,10 @@ An explicit interface is obligatory for
 
 - optional and keyword arguments;
 - POINTER and TARGET arguments (see
-  <a href="#Pointers" class="wikilink" title="Pointers">Pointers</a>);
+  [Pointers](Pointers);
 - POINTER function result;
 - new-style array arguments and array functions
-  (<a href="#Array_handling" class="wikilink" title="Array handling">Array
-  handling</a>).
+  ([Array handling](Array_handling)).
 
 It allows full checks at compile time between actual and dummy
 arguments.
@@ -300,7 +298,7 @@ correct association.
 
 We have already seen the use of interface blocks for defined operators
 and assignment (see
-<a href="#Modules" class="wikilink" title="Modules">Modules</a>).
+[Modules](Modules).
 
 ## Recursion
 
@@ -356,9 +354,9 @@ Here, we note the `RESULT` clause and termination test.
 
 This is a feature for parallel computing.
 
-In <a href="#The_FORALL_statement_and_construct" class="wikilink"
-title="the FORALL statement and construct">the FORALL statement and
-construct</a>, any side effects in a function can impede optimization on
+In
+[the `forall` statement and construct](forall_statement_and_construct),
+any side effects in a function can impede optimization on
 a parallel processor the order of execution of the assignments could
 affect the results. To control this situation, we add the `PURE` keyword
 to the `SUBROUTINE` or `FUNCTION` statementan assertion that the
