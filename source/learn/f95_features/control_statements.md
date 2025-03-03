@@ -1,6 +1,6 @@
-## Control statements
+# Control statements
 
-### Branching and conditions
+## Branching and conditions
 
 The simple `GO TO` *label* exists, but is usually avoided in most cases,
 a more specific branching construct will accomplish the same logic with
@@ -28,7 +28,7 @@ ELSE
 END IF
 ```
 
-### CASE construct
+## CASE construct
 
 The `CASE` construct is a replacement for the computed `GOTO`, but is
 better structured and does not require the use of statement labels:
@@ -60,7 +60,7 @@ CASE DEFAULT
 
 There is only one evaluation, and only one match.
 
-### DO construct
+## DO construct
 
 A simplified but sufficient form of the `DO` construct is illustrated by
 
