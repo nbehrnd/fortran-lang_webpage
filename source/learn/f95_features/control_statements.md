@@ -94,4 +94,3 @@ becomes simply
 ```f90
 tot = SUM( a(m:n) )
 ```
-
