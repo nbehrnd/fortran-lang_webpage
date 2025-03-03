@@ -37,7 +37,7 @@ The form of a function is
 
 ```f90
 FUNCTION name(arg1, arg2) ! zero or more arguments
-   :                     
+   :
    name = ...
    :
 END FUNCTION name
@@ -83,14 +83,14 @@ contains them.
 
 Modules are used to package
 
--   global data (replaces COMMON and BLOCK DATA from Fortran 77);
--   type definitions (themselves a scoping unit);
--   subprograms (which among other things replaces the use of ENTRY from
-    Fortran 77);
--   interface blocks (another scoping unit, see
-    <a href="#Interface_blocks" class="wikilink"
-    title="Interface blocks">Interface blocks</a>);
--   namelist groups (see any textbook).
+- global data (replaces COMMON and BLOCK DATA from Fortran 77);
+- type definitions (themselves a scoping unit);
+- subprograms (which among other things replaces the use of ENTRY from
+  Fortran 77);
+- interface blocks (another scoping unit, see
+  <a href="#Interface_blocks" class="wikilink"
+  title="Interface blocks">Interface blocks</a>);
+- namelist groups (see any textbook).
 
 An example of a module containing a type definition, interface block and
 function subprogram is
@@ -118,7 +118,7 @@ END MODULE interval_arithmetic
 and the simple statement
 
 ```f90
-     
+
 USE interval_arithmetic
 ```
 
@@ -254,13 +254,13 @@ END FUNCTION minimum
 
 An explicit interface is obligatory for
 
--   optional and keyword arguments;
--   POINTER and TARGET arguments (see
-    <a href="#Pointers" class="wikilink" title="Pointers">Pointers</a>);
--   POINTER function result;
--   new-style array arguments and array functions
-    (<a href="#Array_handling" class="wikilink" title="Array handling">Array
-    handling</a>).
+- optional and keyword arguments;
+- POINTER and TARGET arguments (see
+  <a href="#Pointers" class="wikilink" title="Pointers">Pointers</a>);
+- POINTER function result;
+- new-style array arguments and array functions
+  (<a href="#Array_handling" class="wikilink" title="Array handling">Array
+  handling</a>).
 
 It allows full checks at compile time between actual and dummy
 arguments.
@@ -364,11 +364,11 @@ affect the results. To control this situation, we add the `PURE` keyword
 to the `SUBROUTINE` or `FUNCTION` statementan assertion that the
 procedure (expressed simply):
 
--   alters no global variable,
--   performs no I/O,
--   has no saved variables (variables with the `SAVE` attribute that
-    retains values between invocations), and
--   for functions, does not alter any of its arguments.
+- alters no global variable,
+- performs no I/O,
+- has no saved variables (variables with the `SAVE` attribute that
+  retains values between invocations), and
+- for functions, does not alter any of its arguments.
 
 A compiler can check that this is the case, as in
 
