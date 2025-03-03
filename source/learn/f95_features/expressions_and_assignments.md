@@ -27,8 +27,8 @@ result is of same kind, and is converted to the kind of `real2` for
 assignment.
 
 These functions are available for controlled
-<a href="rounding" class="wikilink" title="rounding">rounding</a> of
-real numbers to integers:
+[rounding](https://en.wikipedia.org/wiki/Rounding)
+of real numbers to integers:
 
 - `NINT`: round to nearest integer, return integer result
 - `ANINT`: round to nearest integer, return real result
@@ -102,8 +102,9 @@ char3 = char2//char3     ! intrinsic operator only
 str3  = char1            ! must define assignment
 ```
 
-Notice the "<a href="Operator_overloading" class="wikilink"
-title="overloaded">overloaded</a>" use of the intrinsic symbol `//` and
+Notice the
+["overloaded"](https://en.wikipedia.org/wiki/Operator_overloading)
+use of the intrinsic symbol `//` and
 the named operator, `.concat.` . A difference between the two cases is
 that, for an intrinsic operator token, the usual precedence rules apply,
 whereas for named operators, precedence is the highest as a unary
@@ -116,7 +117,7 @@ vector3 =(matrix .times. vector1) + vector2
 
 the two expressions are equivalent only if appropriate parentheses are
 added as shown. In each case there must be defined, in a
-<a href="#Modules" class="wikilink" title="module">module</a>,
+[module](modules),
 procedures defining the operator and assignment, and corresponding
 operator-procedure association, as follows:
 
@@ -128,7 +129,8 @@ END INTERFACE
 
 The string concatenation function is a more elaborated version of that
 shown already in
-<a href="#Basics" class="wikilink" title="Basics">Basics</a>. Note that
+[Basics](Basics).
+Note that
 in order to handle the error condition that arises when the two strings
 together exceed the preset 80-character limit, it would be safer to use
 a subroutine to perform the concatenation (in this case
@@ -190,8 +192,7 @@ END PROGRAM
 
 Defined operators such as these are required for the expressions that
 are allowed also in structure constructors (see
-<a href="#Derived-data_types" class="wikilink"
-title="Derived-data types">Derived-data types</a>):
+[Derived-data types](Derived-data_types):
 
 ```f90
 str1 = string(2, char1//char2)  ! structure constructor
@@ -242,7 +243,7 @@ are
 - `SET_EXPONENT`
 
 These are array valued for array arguments (elemental), like all
-<a href="FORTRAN_77" class="wikilink" title="FORTRAN 77">FORTRAN 77</a>
+[FORTRAN 77](https://en.wikipedia.org/wiki/FORTRAN_77)
 functions (except LEN):
 
 - `INT`
