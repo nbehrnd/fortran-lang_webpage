@@ -16,31 +16,32 @@ subprograms* or *modules* and can be separately compiled.
 An example of a main (and complete) program is
 
 ```f90
-PROGRAM test
-   PRINT *, 'Hello world!'
-END PROGRAM test
+program test
+  print*,'Hello world!'
+end program test
 ```
 
 An example of a main program and an external subprogram, forming an
 executable program, is
 
 ```f90
-PROGRAM test
-   CALL print_message
-END PROGRAM test
-SUBROUTINE print_message
-   PRINT *, 'Hello world!'
-END SUBROUTINE print_message
+program test
+  call print_message
+end program test
+
+subroutine print_message
+  print*,'Hello world!'
+end subroutine print_message
 ```
 
 The form of a function is
 
 ```f90
-FUNCTION name(arg1, arg2) ! zero or more arguments
-   :
-   name = ...
-   :
-END FUNCTION name
+function name(arg1, arg2)  ! zero or more arguments
+  :
+  name = ...
+  :
+end function name
 ```
 
 The form of reference of a function is
@@ -56,16 +57,16 @@ one level of nesting) and provides a replacement for the statement
 function:
 
 ```f90
-SUBROUTINE outer
-   REAL x, y
-   :
-CONTAINS
-   SUBROUTINE inner
-      REAL y
-      y = x + 1.
-      :
-   END SUBROUTINE inner     ! SUBROUTINE mandatory
-END SUBROUTINE outer
+subroutine outer
+  real x, y
+  :
+contains
+  subroutine inner
+    real y
+    y = x + 1.
+    :
+  end subroutine inner  ! subroutine mandatory
+end subroutine outer
 ```
 
 We say that `outer` is the *host* of `inner`, and that `inner` obtains
@@ -95,30 +96,30 @@ An example of a module containing a type definition, interface block and
 function subprogram is
 
 ```f90
-MODULE interval_arithmetic
-   TYPE interval
-      REAL lower, upper
-   END TYPE interval
-   INTERFACE OPERATOR(+)
-       MODULE PROCEDURE add_intervals
-   END INTERFACE
-   :
-CONTAINS
-   FUNCTION add_intervals(a,b)
-      TYPE(interval), INTENT(IN) :: a, b
-      TYPE(interval) add_intervals
-      add_intervals%lower = a%lower + b%lower
-      add_intervals%upper = a%upper + b%upper
-   END FUNCTION add_intervals             ! FUNCTION mandatory
-   :
-END MODULE interval_arithmetic
+module interval_arithmetic
+  type interval
+    real lower, upper
+  end type interval
+  interface operator(+)
+    module procedure add_intervals
+  end interface
+  :
+contains
+  function add_intervals(a, b)
+    type(interval), intent(IN) :: a, b
+    type(interval) add_intervals
+    add_intervals%lower = a%lower + b%lower
+    add_intervals%upper = a%upper + b%upper
+  end function add_intervals  ! function mandatory
+  :
+end module interval_arithmetic
 ```
 
 and the simple statement
 
 ```f90
 
-USE interval_arithmetic
+use interval_arithmetic
 ```
 
 provides *use association* to all the module's entities. Module
@@ -126,64 +127,64 @@ subprograms may, in turn, contain internal subprograms.
 
 ## Controlling accessibility
 
-The `PUBLIC` and `PRIVATE` attributes are used in specifications in
+The `public` and `private` attributes are used in specifications in
 modules to limit the scope of entities. The attribute form is
 
 ```f90
-REAL, PUBLIC     :: x, y, z           ! default
-INTEGER, PRIVATE :: u, v, w
+real, public     :: x, y, z  ! default
+integer, private :: u, v, w
 ```
 
 and the statement form is
 
 ```f90
-PUBLIC  :: x, y, z, OPERATOR(.add.)
-PRIVATE :: u, v, w, ASSIGNMENT(=), OPERATOR(*)
+public  :: x, y, z, operator(.add.)
+private :: u, v, w, assignment(=), operator(*)
 ```
 
 The statement form has to be used to limit access to operators, and can
 also be used to change the overall default:
 
 ```f90
-PRIVATE                        ! sets default for module
-PUBLIC  :: only_this
+private  ! sets default for module
+public  :: only_this
 ```
 
 For derived types there are three possibilities: the type and its
-components are all PUBLIC, the type is PUBLIC and its components PRIVATE
+components are all `public`, the type is `public` and its components `private`
 (the type only is visible and one can change its details easily), or all
-of it is PRIVATE (for internal use in the module only):
+of it is `private` (for internal use in the module only):
 
 ```f90
-MODULE mine
-   PRIVATE
-   TYPE, PUBLIC :: list
-      REAL x, y
-      TYPE(list), POINTER :: next
-   END TYPE list
-   TYPE(list) :: tree
-   :
-END MODULE mine
+module mine
+  private
+  type, public :: list
+    real x, y
+    type(list), pointer :: next
+  end type list
+  type(list) :: tree
+  :
+end module mine
 ```
 
-The `USE` statement's purpose is to gain access to entities in a module.
+The `use` statement's purpose is to gain access to entities in a module.
 It has options to resolve name clashes if an imported name is the same
 as a local one:
 
 ```f90
-USE mine, local_list => list
+use mine, local_list => list
 ```
 
 or to restrict the used entities to a specified set:
 
 ```f90
-USE mine, ONLY : list
+use mine, only : list
 ```
 
 These may be combined:
 
 ```f90
-USE mine, ONLY : local_list => list
+use mine, only : local_list => list
 ```
 
 ## Arguments
@@ -191,34 +192,34 @@ USE mine, ONLY : local_list => list
 We may specify the intent of dummy arguments:
 
 ```f90
-SUBROUTINE shuffle (ncards, cards)
-  INTEGER, INTENT(IN)  :: ncards
-  INTEGER, INTENT(OUT), DIMENSION(ncards) :: cards
+subroutine shuffle(ncards, cards)
+  integer, intent(IN)  :: ncards
+  integer, intent(OUT), dimension(ncards) :: cards
 ```
 
-Also, INOUT is possible: here the actual argument must be a variable
+Also, `INOUT` is possible: here the actual argument must be a variable
 (unlike the default case where it may be a constant).
 
 Arguments may be optional:
 
 ```f90
-SUBROUTINE mincon(n, f, x, upper, lower, equalities, inequalities, convex, xstart)
-   REAL, OPTIONAL, DIMENSION :: upper, lower
-   :
-   IF (PRESENT(lower)) THEN   ! test for presence of actual argument
-   :
+subroutine mincon(n, f, x, upper, lower, equalities, inequalities, convex, xstart)
+  real, optional, dimension :: upper, lower
+  :
+  if (present(lower)) then  ! test for presence of actual argument
+    :
 ```
 
 allows us to call `mincon` by
 
 ```f90
-CALL mincon (n, f, x, upper)
+call mincon(n, f, x, upper)
 ```
 
 Arguments may be keyword rather than positional (which come first):
 
 ```f90
-CALL mincon(n, f, x, equalities=0, xstart=x0)
+call mincon(n, f, x, equalities=0, xstart=x0)
 ```
 
 Optional and keyword arguments are handled by explicit interfaces, that
@@ -235,28 +236,28 @@ specifications and END statement of the procedure concerned, either
 placed in a module or inserted directly:
 
 ```f90
-REAL FUNCTION minimum(a, b, func)
+real function minimum(a, b, func)
   ! returns the minimum value of the function func(x)
   ! in the interval (a,b)
-  REAL, INTENT(in) :: a, b
-  INTERFACE
-    REAL FUNCTION func(x)
-      REAL, INTENT(IN) :: x
-    END FUNCTION func
-  END INTERFACE
-  REAL f,x
+  real, intent(in) :: a, b
+  interface
+    real function func(x)
+      real, intent(IN) :: x
+    end function func
+  end interface
+  real f, x
   :
-  f = func(x)   ! invocation of the user function.
+  f = func(x)  ! invocation of the user function.
   :
-END FUNCTION minimum
+end function minimum
 ```
 
 An explicit interface is obligatory for
 
 - optional and keyword arguments;
-- POINTER and TARGET arguments (see
+- `pointer` and `target` arguments (see
   [Pointers](Pointers);
-- POINTER function result;
+- `pointer` function result;
 - new-style array arguments and array functions
   ([Array handling](Array_handling)).
 
@@ -273,14 +274,14 @@ Interface blocks provide the mechanism by which we are able to define
 generic names for specific procedures:
 
 ```f90
-INTERFACE gamma                   ! generic name
-   FUNCTION sgamma(X)              ! specific name
-      REAL (SELECTED_REAL_KIND( 6)) sgamma, x
-   END
-   FUNCTION dgamma(X)              ! specific name
-      REAL (SELECTED_REAL_KIND(12)) dgamma, x
-   END
-END INTERFACE
+interface gamma  ! generic name
+  function sgamma(X)  ! specific name
+    real(selected_real_kind(6)) sgamma, x
+  end
+  function dgamma(X)  ! specific name
+    real(selected_real_kind(12)) dgamma, x
+  end
+end interface gamma
 ```
 
 where a given set of specific names corresponding to a generic name must
@@ -288,9 +289,9 @@ all be of functions or all of subroutines. If this interface is within a
 module, then it is simply
 
 ```f90
-INTERFACE gamma
-   MODULE PROCEDURE sgamma, dgamma
-END INTERFACE
+interface gamma
+  module procedure sgamma, dgamma
+end interface
 ```
 
 We can use existing names, e.g. SIN, and the compiler sorts out the
@@ -311,44 +312,44 @@ volume = integrate(fy, ybounds)
 We might have
 
 ```f90
-RECURSIVE FUNCTION integrate(f, bounds)
-   ! Integrate f(x) from bounds(1) to bounds(2)
-   REAL integrate
-   INTERFACE
-      FUNCTION f(x)
-         REAL f, x
-      END FUNCTION f
-   END INTERFACE
-   REAL, DIMENSION(2), INTENT(IN) :: bounds
-   :
-END FUNCTION integrate
+recursive function integrate(f, bounds)
+  ! Integrate f(x) from bounds(1) to bounds(2)
+  real integrate
+  interface
+    function f(x)
+      real f, x
+    end function f
+  end interface
+  real, dimension(2), intent(IN) :: bounds
+  :
+end function integrate
 ```
 
-and to integrate *f(x, y)* over a rectangle:
+and to integrate `f(x, y)` over a rectangle:
 
 ```f90
-FUNCTION fy(y)
-   USE func           ! module func contains function f
-   REAL fy, y
-   yval = y
-   fy = integrate(f, xbounds)
-END
+function fy(y)
+  use func  ! module func contains function f
+  real fy, y
+  yval = y
+  fy = integrate(f, xbounds)
+end
 ```
 
 Direct recursion is when a procedure calls itself, as in
 
 ```f90
-RECURSIVE FUNCTION factorial(n) RESULT(res)
-   INTEGER res, n
-   IF(n.EQ.0) THEN
-      res = 1
-   ELSE
-      res = n*factorial(n-1)
-   END IF
-END
+recursive function factorial(n) result(res)
+  integer res, n
+  if (n .eq. 0) then
+    res = 1
+  else
+    res = n * factorial(n - 1)
+  end if
+end
 ```
 
-Here, we note the `RESULT` clause and termination test.
+Here, we note the `result` clause and termination test.
 
 ## Pure procedures
 
@@ -358,20 +359,20 @@ In
 [the `forall` statement and construct](forall_statement_and_construct),
 any side effects in a function can impede optimization on
 a parallel processor the order of execution of the assignments could
-affect the results. To control this situation, we add the `PURE` keyword
-to the `SUBROUTINE` or `FUNCTION` statementan assertion that the
+affect the results. To control this situation, we add the `pure` keyword
+to the `subroutine` or `function` statement an assertion that the
 procedure (expressed simply):
 
 - alters no global variable,
 - performs no I/O,
-- has no saved variables (variables with the `SAVE` attribute that
+- has no saved variables (variables with the `save` attribute that
   retains values between invocations), and
 - for functions, does not alter any of its arguments.
 
 A compiler can check that this is the case, as in
 
 ```f90
-PURE FUNCTION calculate (x)
+pure function calculate(x)
 ```
 
-All the intrinsic functions are pure.
+All the intrinsic functions are `pure`.
