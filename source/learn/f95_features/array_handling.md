@@ -366,16 +366,14 @@ tar(1, 1)%u  !  component of an array element
 
 ### Vector and matrix multiply
 
-|               |                                  |
-|---------------|----------------------------------|
 | `dot_product` | Dot product of 2 rank-one arrays |
+|---------------|----------------------------------|
 | `matmul`      | Matrix multiplication            |
 
 ### Array reduction
 
-|           |                                                             |
-|-----------|-------------------------------------------------------------|
 | `all`     | True if all values are true                                 |
+|-----------|-------------------------------------------------------------|
 | `any`     | True if any value is true. Example: `if (any( a > b)) then` |
 | `count`   | Number of true elements in array                            |
 | `maxval`  | Maximum value in an array                                   |
@@ -385,9 +383,8 @@ tar(1, 1)%u  !  component of an array element
 
 ### Array inquiry
 
-|             |                                      |
-|-------------|--------------------------------------|
 | `allocated` | Array allocation status              |
+|-------------|--------------------------------------|
 | `lbound`    | Lower dimension bounds of an array   |
 | `shape`     | Shape of an array (or scalar)        |
 | `size`      | Total number of elements in an array |
@@ -395,30 +392,26 @@ tar(1, 1)%u  !  component of an array element
 
 ### Array construction
 
-|          |                                                      |
-|----------|------------------------------------------------------|
 | `merge`  | Merge under mask                                     |
+|----------|------------------------------------------------------|
 | `pack`   | Pack an array into an array of rank one under a mask |
 | `spread` | Replicate array by adding a dimension                |
 | `unpack` | Unpack an array of rank one into an array under mask |
 
 ### Array reshape
 
-|           |                  |
-|-----------|------------------|
 | `reshape` | Reshape an array |
+|-----------|------------------|
 
 ### Array manipulation
 
-|             |                                   |
-|-------------|-----------------------------------|
 | `cshift`    | Circular shift                    |
+|-------------|-----------------------------------|
 | `eoshift`   | End-off shift                     |
 | `transpose` | Transpose of an array of rank two |
 
 ### Array location
 
-|          |                                             |
-|----------|---------------------------------------------|
 | `maxloc` | Location of first maximum value in an array |
+|----------|---------------------------------------------|
 | `minloc` | Location of first minimum value in an array |
