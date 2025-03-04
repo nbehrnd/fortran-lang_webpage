@@ -52,8 +52,8 @@ call sub(a)
 the corresponding dummy argument specification defines only the type and
 rank of the array, not its shape. This information has to be made
 available by an explicit interface, often using an interface block (see
-<a href="#Interface_blocks" class="wikilink"
-title="Interface blocks">Interface blocks</a>). Thus we write just
+[Interface blocks](interface_blocks).
+Thus we write just
 
 ```f90
 subroutine sub(da)
