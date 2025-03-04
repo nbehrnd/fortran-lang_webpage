@@ -297,6 +297,7 @@ books:
       - /learn/f95_features/control_statements
       - /learn/f95_features/programm_units_and_procedures
       - /learn/f95_features/array_handling
+      - /learn/f95_features/pointers
 
 # Web links listed at the bottom of the 'Learn' landing page
 #
