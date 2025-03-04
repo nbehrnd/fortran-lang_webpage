@@ -167,12 +167,12 @@ first%next => current%next
 If an actual argument is a pointer then, if the dummy argument is also a
 pointer,
 
--   it must have same rank,
--   it receives its association status from the actual argument,
--   it returns its final association status to the actual argument
-    (note: the target may be undefined!),
--   it may not have the `INTENT` attribute (it would be ambiguous),
--   it requires an interface block.
+- it must have same rank,
+- it receives its association status from the actual argument,
+- it returns its final association status to the actual argument
+  (note: the target may be undefined!),
+- it may not have the `INTENT` attribute (it would be ambiguous),
+- it requires an interface block.
 
 If the dummy argument is not a pointer, it becomes associated with the
 target of the actual argument:
