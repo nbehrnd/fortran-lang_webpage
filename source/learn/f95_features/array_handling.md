@@ -2,11 +2,11 @@
 
 Array handling is included in Fortran for two main reasons:
 
--   the notational convenience it provides, bringing the code closer to
-    the underlying mathematical form;
--   for the additional optimization opportunities it gives compilers
-    (although there are plenty of opportunities for degrading
-    optimization too!).
+- the notational convenience it provides, bringing the code closer to
+  the underlying mathematical form;
+- for the additional optimization opportunities it gives compilers
+  (although there are plenty of opportunities for degrading
+  optimization too!).
 
 At the same time, major extensions of the functionality in this area
 have been added. We have already met whole arrays above
@@ -202,18 +202,18 @@ END WHERE
 
 Further:
 
--   it is permitted to mask not only the `WHERE` statement of the
-    `WHERE` construct, but also any `ELSEWHERE` statement that it
-    contains;
--   a `WHERE` construct may contain any number of masked `ELSEWHERE`
-    statements but at most one `ELSEWHERE` statement without a mask, and
-    that must be the final one;
--   `WHERE` constructs may be nested within one another, just `FORALL`
-    constructs;
--   a `WHERE` assignment statement is permitted to be a defined
-    assignment, provided that it is elemental;
--   a `WHERE` construct may be named in the same way as other
-    constructs.
+- it is permitted to mask not only the `WHERE` statement of the
+  `WHERE` construct, but also any `ELSEWHERE` statement that it
+  contains;
+- a `WHERE` construct may contain any number of masked `ELSEWHERE`
+  statements but at most one `ELSEWHERE` statement without a mask, and
+  that must be the final one;
+- `WHERE` constructs may be nested within one another, just `FORALL`
+  constructs;
+- a `WHERE` assignment statement is permitted to be a defined
+  assignment, provided that it is elemental;
+- a `WHERE` construct may be named in the same way as other
+  constructs.
 
 ## The FORALL statement and construct
 
@@ -361,14 +361,14 @@ tar(1, 1)%u        !  component of an array element
 
 ## Arrays intrinsic functions
 
-***Vector and matrix multiply***
+### Vector and matrix multiply
 
 |               |                                  |
 |---------------|----------------------------------|
 | `DOT_PRODUCT` | Dot product of 2 rank-one arrays |
 | `MATMUL`      | Matrix multiplication            |
 
-***Array reduction***
+### Array reduction
 
 |           |                                                             |
 |-----------|-------------------------------------------------------------|
@@ -380,7 +380,7 @@ tar(1, 1)%u        !  component of an array element
 | `PRODUCT` | Product of array elements                                   |
 | `SUM`     | Sum of array elements                                       |
 
-***Array inquiry***
+### Array inquiry
 
 |             |                                      |
 |-------------|--------------------------------------|
@@ -390,7 +390,7 @@ tar(1, 1)%u        !  component of an array element
 | `SIZE`      | Total number of elements in an array |
 | `UBOUND`    | Upper dimension bounds of an array   |
 
-***Array construction***
+### Array construction
 
 |          |                                                      |
 |----------|------------------------------------------------------|
@@ -399,13 +399,13 @@ tar(1, 1)%u        !  component of an array element
 | `SPREAD` | Replicate array by adding a dimension                |
 | `UNPACK` | Unpack an array of rank one into an array under mask |
 
-***Array reshape***
+### Array reshape
 
 |           |                  |
 |-----------|------------------|
 | `RESHAPE` | Reshape an array |
 
-***Array manipulation***
+### Array manipulation
 
 |             |                                   |
 |-------------|-----------------------------------|
@@ -413,10 +413,9 @@ tar(1, 1)%u        !  component of an array element
 | `EOSHIFT`   | End-off shift                     |
 | `TRANSPOSE` | Transpose of an array of rank two |
 
-***Array location***
+### Array location
 
 |          |                                             |
 |----------|---------------------------------------------|
 | `MAXLOC` | Location of first maximum value in an array |
 | `MINLOC` | Location of first minimum value in an array |
-
