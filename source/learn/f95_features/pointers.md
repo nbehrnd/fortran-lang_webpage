@@ -1,6 +1,6 @@
-## Pointers
+# Pointers
 
-### Basics
+## Basics
 
 Pointers are variables with the `POINTER` attribute; they are not a
 distinct data type (and so no 'pointer arithmetic' is possible).
@@ -84,7 +84,7 @@ chain%next            chain%next%next
 but we would normally define additional pointers to point at, for
 instance, the first and current entries in the list.
 
-### Association
+## Association
 
 A pointer's association status is one of Some care has to be taken not
 to leave a pointer 'dangling' by use of `DEALLOCATE` on its target
@@ -112,7 +112,7 @@ REAL, POINTER, DIMENSION(:) :: vector => NULL() ! compile time
 vector => NULL()                                ! run time
 ```
 
-### Pointers in expressions and assignments
+## Pointers in expressions and assignments
 
 For intrinsic types we can 'sweep' pointers over different sets of
 target data using the same code without any data movement. Given the
@@ -162,7 +162,7 @@ first%index = current%index
 first%next => current%next
 ```
 
-### Pointer arguments
+## Pointer arguments
 
 If an actual argument is a pointer then, if the dummy argument is also a
 pointer,
@@ -188,7 +188,7 @@ SUBROUTINE sub(c)
    REAL c(:, :)
 ```
 
-### Pointer functions
+## Pointer functions
 
 Function results may also have the `POINTER` attribute; this is useful
 if the result size depends on calculations performed in the function, as
@@ -219,7 +219,7 @@ END FUNCTION compact
 The result can be used in an expression (but must be associated with a
 defined target).
 
-### Arrays of pointers
+## Arrays of pointers
 
 These do not exist as such: given
 
@@ -271,7 +271,7 @@ s(i)%r => t(i)%r
 
 for all components.
 
-### Pointers as dynamic aliases
+## Pointers as dynamic aliases
 
 Given an array
 
