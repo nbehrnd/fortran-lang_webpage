@@ -1,4 +1,4 @@
-## Array handling
+# Array handling
 
 Array handling is included in Fortran for two main reasons:
 
@@ -15,7 +15,7 @@ here
 <a href="#Arrays_2" class="wikilink" title="#Arrays 2">#Arrays 2</a> -
 now we develop the theme.
 
-### Zero-sized arrays
+## Zero-sized arrays
 
 A zero-sized array is handled by Fortran as a legitimate object, without
 special coding by the programmer. Thus, in
@@ -37,7 +37,7 @@ x(1:0) = 3
 
 is a valid 'do nothing' statement.
 
-### Assumed-shape arrays
+## Assumed-shape arrays
 
 These are an extension and replacement for assumed-size arrays. Given an
 actual argument like:
@@ -69,7 +69,7 @@ REAL, DIMENSION(0:, 0:) :: da
 The shape, not bounds, is passed, where the default lower bound is 1 and
 the default upper bound is the corresponding extent.
 
-### Automatic arrays
+## Automatic arrays
 
 A partial replacement for the uses to which `EQUIVALENCE` was put is
 provided by this facility, useful for local, temporary arrays, as in
@@ -86,7 +86,7 @@ END SUBROUTINE swap
 
 The actual storage is typically maintained on a stack.
 
-### ALLOCATABLE and ALLOCATE
+## ALLOCATABLE and ALLOCATE
 
 Fortran provides dynamic allocation of storage; it relies on a heap
 storage mechanism (and replaces another use of `EQUIVALENCE`). An
@@ -116,7 +116,7 @@ DEALLOCATE(a, b)
 
 Deallocation of arrays is automatic when they go out of scope.
 
-### Elemental operations, assignments and procedures
+## Elemental operations, assignments and procedures
 
 We have already met whole array assignments and operations:
 
@@ -171,7 +171,7 @@ title="above">above</a>) except as arguments to certain intrinsic
 functions (`BIT_SIZE`, `KIND`, `LEN`, and the numeric inquiry ones, (see
 <a href="#Intrinsic_data_types" class="wikilink" title="below">below</a>).
 
-### WHERE
+## WHERE
 
 Often, we need to mask an assignment. This we can do using the `WHERE`,
 either as a statement:
@@ -215,7 +215,7 @@ Further:
 -   a `WHERE` construct may be named in the same way as other
     constructs.
 
-### The FORALL statement and construct
+## The FORALL statement and construct
 
 When a `DO` construct is executed, each successive iteration is
 performed in order and one after the otheran impediment to optimization
@@ -262,7 +262,7 @@ fully complete before the second can begin.
 A `FORALL` may be nested, and may include a `WHERE`. Procedures
 referenced within a `FORALL` must be pure.
 
-### Array elements
+## Array elements
 
 For a simple case, given
 
@@ -307,7 +307,7 @@ tar(n, 2)%du(2)
 is an element of it. The basic rule to remember is that an array element
 always has a subscript or subscripts qualifying at least the last name.
 
-### Array subobjects (sections)
+## Array subobjects (sections)
 
 The general form of subscript for an array section is
 
@@ -359,7 +359,7 @@ tar%u              !  array section (structure component)
 tar(1, 1)%u        !  component of an array element
 ```
 
-### Arrays intrinsic functions
+## Arrays intrinsic functions
 
 ***Vector and matrix multiply***
 
