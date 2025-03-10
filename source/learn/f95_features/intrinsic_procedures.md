@@ -13,12 +13,12 @@ and many have optional arguments.
 
 The intrinsic procedures are grouped into four categories:
 
-1.  elemental - work on scalars or arrays, e.g. `ABS(a)`;
-2.  inquiry - independent of value of argument (which may be undefined),
-    e.g. `PRECISION(a)`;
-3.  transformational - array argument with array result of different
-    shape, e.g. `RESHAPE(a, b)`;
-4.  subroutines, e.g. `SYSTEM_CLOCK`.
+1. elemental - work on scalars or arrays, e.g. `ABS(a)`;
+1. inquiry - independent of value of argument (which may be undefined),
+   e.g. `PRECISION(a)`;
+1. transformational - array argument with array result of different
+   shape, e.g. `RESHAPE(a, b)`;
+1. subroutines, e.g. `SYSTEM_CLOCK`.
 
 The procedures not already introduced are
 
@@ -61,4 +61,3 @@ Subroutines
 | `RANDOM_SEED`   | Access to seed                    |
 | `SYSTEM_CLOCK`  | Access to system clock            |
 | `CPU_TIME`      | Returns processor time in seconds |
-
