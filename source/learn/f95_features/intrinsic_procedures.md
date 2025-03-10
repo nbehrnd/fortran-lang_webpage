@@ -1,4 +1,4 @@
-## Intrinsic procedures
+# Intrinsic procedures
 
 Most of the intrinsic functions have already been mentioned. Here, we
 deal only with their general classification and with those that have so
