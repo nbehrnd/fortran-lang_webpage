@@ -13,8 +13,7 @@ They are conceptually a descriptor listing the attributes of the objects
 (targets) that the pointer may point to, and the address, if any, of a
 target. They have no associated storage until it is allocated or
 otherwise associated (by pointer assignment, see
-<a href="#Pointers_in_expressions_and_assignments" class="wikilink"
-title="below">below</a>):
+[Pointers in expressions and assignments](Pointers_in_expressions_and_assignments):
 
 ```f90
 allocate (var)
@@ -290,7 +289,7 @@ window => table(m:n, p:q)
 
 The subscripts of window are `1:n - m + 1, 1:q - p + 1`.
 Similarly, for `tar%u` (as defined in
-<a href="#Array_elements" class="wikilink" title="already">already</a>),
+[Array elements](array_elements)),
 we can use, say, `taru => tar%u`
 to point at all the u components of tar, and subscript it as
 `taru(1, 2)`.
@@ -303,16 +302,16 @@ to `array_expression`. Thus, when a pointer is assigned to a whole array
 variable, it inherits the lower bounds of the variable, otherwise, the
 lower bounds default to `1`.
 
-<a href="Fortran_2003" class="wikilink" title="Fortran 2003">Fortran
-2003</a> allows specifying arbitrary lower bounds on pointer
+[Fortran 2003](https://en.wikipedia.org/wiki/Fortran#Fortran_2003)
+allows specifying arbitrary lower bounds on pointer
 association, like
 
 ```f90
 window(r:, s:) => table(m:n, p:q)
 ```
 
-so that the bounds of `window` become `r:r + n - m, s:s + q - p`
-<a href="Fortran_95" class="wikilink" title="Fortran 95">Fortran 95</a>
+so that the bounds of `window` become `r:r + n - m, s:s + q - p`.
+[Fortran 95](https://en.wikipedia.org/wiki/Fortran_95)
 does not have this feature; however, it can be simulated using the
 following trick (based on the pointer association rules for assumed
 shape array dummy arguments):
