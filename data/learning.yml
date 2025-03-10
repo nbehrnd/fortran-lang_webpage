@@ -299,6 +299,7 @@ books:
       - /learn/f95_features/array_handling
       - /learn/f95_features/pointers
       - /learn/f95_features/intrinsic_procedures
+      - /learn/f95_features/data_transfer
 
 # Web links listed at the bottom of the 'Learn' landing page
 #
