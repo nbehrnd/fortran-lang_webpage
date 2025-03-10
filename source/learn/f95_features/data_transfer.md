@@ -147,7 +147,9 @@ WRITE (UNIT=line, FMT="(a, i2, a, f8.2, a)") "Takings for day ", day, " are ", c
 
 that might write
 
-     Takings for day  3 are  4329.15 dollars
+```shell
+Takings for day  3 are  4329.15 dollars
+```
 
 ## List-directed I/O
 
@@ -292,4 +294,3 @@ WRITE (UNIT=nunit, REC=14) a
 
 The file must be an external file and list-directed formatting and
 non-advancing I/O are unavailable.
-
