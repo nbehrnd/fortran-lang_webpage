@@ -6,19 +6,19 @@ far been omitted. All intrinsic procedures can be used with keyword
 arguments:
 
 ```f90
-CALL DATE_AND_TIME (TIME=t)
+call date_and_time(TIME=t)
 ```
 
 and many have optional arguments.
 
 The intrinsic procedures are grouped into four categories:
 
-1. elemental - work on scalars or arrays, e.g. `ABS(a)`;
+1. elemental - work on scalars or arrays, e.g. `abs(a)`;
 1. inquiry - independent of value of argument (which may be undefined),
-   e.g. `PRECISION(a)`;
+   e.g. `precision(a)`;
 1. transformational - array argument with array result of different
-   shape, e.g. `RESHAPE(a, b)`;
-1. subroutines, e.g. `SYSTEM_CLOCK`.
+   shape, e.g. `reshape(a, b)`;
+1. subroutines, e.g. `system_clock`.
 
 The procedures not already introduced are
 
@@ -26,38 +26,38 @@ Bit inquiry
 
 |            |                             |
 |------------|-----------------------------|
-| `BIT_SIZE` | Number of bits in the model |
+| `bit_size` | Number of bits in the model |
 
 Bit manipulation
 
 |          |                    |
 |----------|--------------------|
-| `BTEST`  | Bit testing        |
-| `IAND`   | Logical AND        |
-| `IBCLR`  | Clear bit          |
-| `IBITS`  | Bit extraction     |
-| `IBSET`  | Set bit            |
-| `IEOR`   | Exclusive OR       |
-| `IOR`    | Inclusive OR       |
-| `ISHFT`  | Logical shift      |
-| `ISHFTC` | Circular shift     |
-| `NOT`    | Logical complement |
+| `btest`  | Bit testing        |
+| `iand`   | Logical AND        |
+| `ibclr`  | Clear bit          |
+| `ibits`  | Bit extraction     |
+| `ibset`  | Set bit            |
+| `ieor`   | Exclusive OR       |
+| `ior`    | Inclusive OR       |
+| `ishft`  | Logical shift      |
+| `ishftc` | Circular shift     |
+| `not`    | Logical complement |
 
 Transfer function, as in
 
 ```f90
-INTEGER :: i = TRANSFER('abcd', 0)
+integer :: i = transfer('abcd', 0)
 ```
 
-(replaces part of EQUIVALENCE)
+(replaces part of `equivalence`)
 
 Subroutines
 
 |                 |                                   |
 |-----------------|-----------------------------------|
-| `DATE_AND_TIME` | Obtain date and/or time           |
-| `MVBITS`        | Copies bits                       |
-| `RANDOM_NUMBER` | Returns pseudorandom numbers      |
-| `RANDOM_SEED`   | Access to seed                    |
-| `SYSTEM_CLOCK`  | Access to system clock            |
-| `CPU_TIME`      | Returns processor time in seconds |
+| `date_and_time` | Obtain date and/or time           |
+| `mvbits`        | Copies bits                       |
+| `random_number` | Returns pseudorandom numbers      |
+| `random_seed`   | Access to seed                    |
+| `system_clock`  | Access to system clock            |
+| `cpu_time`      | Returns processor time in seconds |
