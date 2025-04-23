@@ -1364,6 +1364,14 @@
   tags: finite-difference hydrodynamics magnetic-field particles
   license: GPL-2.0
 
+- name: PHANTOM
+  github: danieljprice/phantom
+  description: Smoothed particle hydrodynamics and magnetohydrodyanmics for astrophysics simulations
+  categories: scientific
+  tags: astrophysics SPH MHD hydrodynamics
+  license: GPL-3.0
+
+
 - name: MOM6
   github: NOAA-GFDL/MOM6
   description: Modular Ocean Model
