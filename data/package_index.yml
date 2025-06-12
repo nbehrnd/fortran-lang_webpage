@@ -462,6 +462,13 @@
   license: MIT
   tags: linter
 
+- name: tree-sitter-fortran
+  github: stadelmanma/tree-sitter-fortran
+  description: Fortran 90 grammar for the Tree-sitter language parsing framework
+  categories: programming
+  tags: parser
+  license: MIT
+
 # --- Data types ---
 
 - name: Fortran template library
