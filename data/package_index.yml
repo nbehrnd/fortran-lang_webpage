@@ -1600,6 +1600,13 @@
   tags: material structure phase atomic molecular-modeling
   license: GPL-3.0
 
+- name: GEOS-Chem
+  github: geoschem/geos-chem
+  description: Atmospheric chemistry model 
+  categories: scientific
+  tags: climate chemistry atmospheric-modelling atmospheric-chemistry 
+  license: MIT
+
 # --- Examples / demos / templates ---
 
 - name: Fortran 2018 examples
